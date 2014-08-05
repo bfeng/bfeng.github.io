@@ -3,7 +3,7 @@ layout: post
 title: Install cuda 5 on Ubuntu 12.10
 date: 2014-02-12 20:50:11 UTC
 updated: 2014-02-12 20:50:11 UTC
-comments: false
+comments: true
 categories: GPU
 ---
 
