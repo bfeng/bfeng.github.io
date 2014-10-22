@@ -84,7 +84,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 
 In this example, `winClass` is the variable of the `WNDCLASSEX` structure, and some properties are initialized. Calling `RegisterClassEx(&winClass)` is to register the class in Windows environment. Then, the window class can be used in the rest of the program.
 
-#### The control procedure
+### The control procedure
 
 In the above code, `lpfnWndProc` is an important but intentionally omitted property. This property is a function pointer of a *windows procedure*. A windows procedure is a special function, used to control the message events from a class of window. Its definition is like this:
 
