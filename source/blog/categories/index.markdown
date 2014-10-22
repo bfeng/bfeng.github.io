@@ -2,7 +2,7 @@
 layout: page
 title: "categories"
 date: 2014-10-22 10:40
-comments: true
+comments: false
 sharing: true
 footer: true
 ---
