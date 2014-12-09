@@ -9,15 +9,17 @@ categories: [java, tutorial]
 ## Introduction
 Java is a computer programming language, which was invented by [Sun Microsystems](http://en.wikipedia.org/wiki/Sun_Microsystems) and now has been merged into [Oracle Corporation](http://en.wikipedia.org/wiki/Oracle_Corporation). Java was originally designed by a Canadian computer scientist [James Gosling](http://en.wikipedia.org/wiki/James_Gosling) when he worked at Sun Microsystems.
 
+<!--more-->
+
 Java is a distinguished language due to many features that other languages do not have. It is a static language but it does not run by the native code, like C or C++.
 It is interpreted at runtime but it is not dynamic typed like Perl, Python, PHP, etc. It is compiled into a platform neutral byte code, which is then interpreted by the Java Virtual Machine (JVM).
-    
+
 	+-------+    +--------+    +-----+
 	| .java | -> | .class | -> | JVM |
 	+-------+    +--------+    +-----+
 
 ## Setup JDK
-JDK, which is short of Java Development Kit, is a set of tools used to develop Java programs. Before one can compile and run a Java program, the JDK should be installed. Here there are two commands users should get familiar: 
+JDK, which is short of Java Development Kit, is a set of tools used to develop Java programs. Before one can compile and run a Java program, the JDK should be installed. Here there are two commands users should get familiar:
 
 1. javac
 
@@ -28,14 +30,14 @@ JDK, which is short of Java Development Kit, is a set of tools used to develop J
 	`java` is a program which start up a JVM and run Java byte code.
 
 So the above figure should be like this:
-  
+
 	+-------+             +--------+
-	| .java | -> javac -> | .class | -> java 
+	| .java | -> javac -> | .class | -> java
 	+-------+             +--------+
 
 ### Download and Installation
 
-There are many distributions of JDK. The two representatives of them are from Oracle or OpenJDK project. They are free to download and use. For the convince, I assume the JDK is version 7 from Oracle in the following. 
+There are many distributions of JDK. The two representatives of them are from Oracle or OpenJDK project. They are free to download and use. For the convince, I assume the JDK is version 7 from Oracle in the following.
 
 ### Setup System Environment Variables
 

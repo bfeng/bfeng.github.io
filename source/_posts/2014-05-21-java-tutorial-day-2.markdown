@@ -10,6 +10,8 @@ categories: [java, tutorial]
 
 I/O, which is short for **Input and Output**, is an important part in any programming language. So is in Java. Today we only refer the console I/O as the standard input and output in a console, which is also the simplest way how users interact with a program.
 
+<!--more-->
+
 ## Input and Output Usage ##
 When a program is running in the console, it often requires users to input some characters, such as parameters, records and text. The program may also print some characters to the console in order to notify the information to users.
 

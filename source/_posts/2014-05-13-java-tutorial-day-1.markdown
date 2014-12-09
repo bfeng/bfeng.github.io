@@ -11,6 +11,8 @@ Introduction
 
 Primitive data types are the basic data types used in Java. With primitive data types and arrays of them, many questions could be solved now. This post will cover what the primitive data types are and usage of the 1-d array of them. The control flow helps to build more complex program execution.
 
+<!--more-->
+
 Primitive data types
 --------------------
 

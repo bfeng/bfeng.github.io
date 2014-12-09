@@ -6,6 +6,9 @@ comments: true
 categories: [GPU]
 ---
 
+This blog shows an example of how to use GPU to convert color images to grayscale.
+
+<!--more-->
 
 ## Build Cuda source module with Python
 

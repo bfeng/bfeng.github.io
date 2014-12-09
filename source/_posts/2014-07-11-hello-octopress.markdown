@@ -8,6 +8,8 @@ categories: blogging fun
 
 This is first post from octopress. Octopress is an awesome blogging framework, which provides many handful facilities.
 
+<!--more-->
+
 ## Source commands
 
 Many handful functionalites are wrapped in the `Rakefile`, which is a definetion file for `rake` commond. Basicly, the commands defined are:

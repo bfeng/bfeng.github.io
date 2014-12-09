@@ -12,6 +12,8 @@ This is a tutorial of how to make a Windows program. It is just more like a hell
 
 This tutorial introduces the basic elements of Windows programs, such as main entry functions, window class registration, window class creation, control procedure, message loop and so on. Please note that the code in this tutorial is *not* for production use.
 
+<!--more-->
+
 ## How to setup compilers
 
 The first step to write a real application is to setup its compilers. `MinGW` is an open source compiler suite, including `GCC for C, C++, Fortran, Java, and Ada`, `binutils`, `Windows API, runtime`, and `make`. The following steps guide how to setup `MinGW` on Windows. In this tutorial, we use `MinGW-gcc` as the compiler for C and its runtime library to run the application on Windows.

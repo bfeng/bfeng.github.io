@@ -6,6 +6,10 @@ comments: true
 categories: [interview, java]
 ---
 
+This questions are mainly from internet.
+
+<!--more-->
+
 1. What do you know about Java?
 
 	Java is nothing but a high-level programming language from the Sun Microsystem, and now from Oracle Inc. It is released in the year 1995 and runs on multiple platforms like Linux, Windows, Mac and other variations of UNIX. [James Gosling](http://en.wikipedia.org/wiki/James_Gosling) is known as the father of Java programming language.
@@ -24,7 +28,7 @@ categories: [interview, java]
 
 5. What is the difference between an Interface and an Abstract class?
 
-	An abstract class can have instance methods that implement a default behavior. An Interface can only declare constants and instance methods, but cannot implement default behavior and all methods are implicitly abstract. An interface has all public members and no implementation. An abstract class is a class which may have the usual flavors of class members (`private`, `protected`, etc.), but has some abstract methods. 
+	An abstract class can have instance methods that implement a default behavior. An Interface can only declare constants and instance methods, but cannot implement default behavior and all methods are implicitly abstract. An interface has all public members and no implementation. An abstract class is a class which may have the usual flavors of class members (`private`, `protected`, etc.), but has some abstract methods.
 
 6. What is the purpose of garbage collection in Java, and when is it used?
 
@@ -36,7 +40,7 @@ categories: [interview, java]
 
 8. Is the Java method called by reference or by value?
 
-	Java does manipulate objects by reference, and all object variables are references. However, Java doesn't pass method arguments by reference; it passes them by value. 
+	Java does manipulate objects by reference, and all object variables are references. However, Java doesn't pass method arguments by reference; it passes them by value.
 
 9. What is the difference between a constructor and a method?
 
@@ -44,7 +48,7 @@ categories: [interview, java]
 
 10. Difference between `Vector` and `ArrayList`?
 
-	`Vector` is synchronized whereas `ArrayList` is not. 
+	`Vector` is synchronized whereas `ArrayList` is not.
 
 11. What is `static` in Java? And `final`?
 
@@ -83,77 +87,77 @@ categories: [interview, java]
 
 	It is because to avoid change in `String` object once it is created. As String is immutable, you can share it between different threads in a safe way. This is quite crucial in multithreaded programming.
 
-20. Can you quickly brief about `Map`, `HashMap`, `HashTable`, and `TreeMap`? 
+20. Can you quickly brief about `Map`, `HashMap`, `HashTable`, and `TreeMap`?
 
 	`Map` is an interface, and `HashMap` is a class that implements a `Map`. It is not synchronized and supports null values and keys `HashTable` is a synchronized version of `HashMap`. `TreeMap` is similar to `HashMap` but uses `Tree` to implement `Map`.
 
-21. Do you think not overriding `hashcode()` method has any performance implication? 
+21. Do you think not overriding `hashcode()` method has any performance implication?
 
-	A weak `hashcode` function will result into frequent collision in `HashMap`, which will at the end increase the time to add an object within `HashMap`. 
+	A weak `hashcode` function will result into frequent collision in `HashMap`, which will at the end increase the time to add an object within `HashMap`.
 
 22. Can you explain when and why Getters and Setters important?
 
 	We can put setters and getters within interfaces, which can hide implementation details. This allows us to make member variables public in Java. Getters and Setters are important to encapsulate Java class, which hide the direct accesses to member fields. This design is called [Plain Old Java Object (POJO)](http://en.wikipedia.org/wiki/Plain_Old_Java_Object).
 
-23. Is it possible to import same package or class twice? Will the JVM load the package twice at runtime? 
+23. Is it possible to import same package or class twice? Will the JVM load the package twice at runtime?
 
-	It is possible to import the same package or class more than one time. Also, it won’t have any effect on compiler or JVM. JVM will load the class for one time only, irrespective of the number of times you import the same class. 
+	It is possible to import the same package or class more than one time. Also, it won’t have any effect on compiler or JVM. JVM will load the class for one time only, irrespective of the number of times you import the same class.
 
 24. What is difference between Throw and Throws?
 
-	While Throw is used to trigger an exception, Throws is used in the declaration of exception. It is not possible to handle checked exception without Throws. 
+	While Throw is used to trigger an exception, Throws is used in the declaration of exception. It is not possible to handle checked exception without Throws.
 
 25. What is the significance of the order in which catch statements for `FileNotFoundException` and `IOException` are written?
 
-	It is crucial to consider the order as the `FileNoFoundException` is inherited from the `IOException`. Therefore, it is important that exception's subclasses caught first. 
+	It is crucial to consider the order as the `FileNoFoundException` is inherited from the `IOException`. Therefore, it is important that exception's subclasses caught first.
 
-26. Can throw some light on Yielding and Sleeping? 
+26. Can throw some light on Yielding and Sleeping?
 
-	When any task invokes its `yield()` method, it will return to the ready state. Whenever a task invokes `sleep()` method, it will return to the wait state. 
+	When any task invokes its `yield()` method, it will return to the ready state. Whenever a task invokes `sleep()` method, it will return to the wait state.
 
-27. Why you should use Vector class? 
+27. Why you should use Vector class?
 
-	It provides the capability to implement a growable array of objects. It is quite useful when we don’t know the exact size of the array. 
+	It provides the capability to implement a growable array of objects. It is quite useful when we don’t know the exact size of the array.
 
 28. Can you tell me the number of bits used to represent Unicode, ASCII, UTF-16, and UTF-8 characters?
 
-	For Unicode 16 bits and ASCII needs 7 bits. However, ASCII is usually represented as 8 bits. UTF-8 presents characters through 8, 16 and 18 bit pattern. UTF-16 will require 16-bit and larger bit patterns. 
+	For Unicode 16 bits and ASCII needs 7 bits. However, ASCII is usually represented as 8 bits. UTF-8 presents characters through 8, 16 and 18 bit pattern. UTF-16 will require 16-bit and larger bit patterns.
 
-29. What is Applets? 
+29. What is Applets?
 
-	A small program based on Java that can be transformed from one computer to another using the Applet Viewer or web browser. 
+	A small program based on Java that can be transformed from one computer to another using the Applet Viewer or web browser.
 
 30. What is the use of Locale?
 
-	Locale is an object containing geographical, cultural and political information which helps in using custom codes and conventions of specific country or region for writing applications in that language. 
+	Locale is an object containing geographical, cultural and political information which helps in using custom codes and conventions of specific country or region for writing applications in that language.
 
 31. What is the use of Java Package?
 
-	Java Package is useful for organizing projects containing multiple modules and protecting them from unauthorized access. 
+	Java Package is useful for organizing projects containing multiple modules and protecting them from unauthorized access.
 
-32. While working in the JVM, do we need to import java.lang package? 
+32. While working in the JVM, do we need to import java.lang package?
 
 	No, by default it is loaded in the JVM.
 
 33. Can Applets communicate with each other?
 
-	Yes, they can communicate via shared static variables even if they belong to same of different classes. 
+	Yes, they can communicate via shared static variables even if they belong to same of different classes.
 
 34. Can a .java file support more than one java classes?
 
-	Yes, it can support more than one Java classes in a condition where one of them is a public class. 
+	Yes, it can support more than one Java classes in a condition where one of them is a public class.
 
 35. MAIN, NEXT, DELETE & EXIT, which of these is a keyword in Java?
 
-	None of these is a keyword in Java 
+	None of these is a keyword in Java
 
 36. How to handle errors while writing or accessing Stored Procedures.
- 
-	Store Procedure itself returns the error codes if any but, in case if it fails to do so, we can resort to catching SQL Exception. 
+
+	Store Procedure itself returns the error codes if any but, in case if it fails to do so, we can resort to catching SQL Exception.
 
 37. From `ArrayList` and `LinkedList`, which one helps to perform an indexed search in a list of objects?
 
-	`ArrayList` 
+	`ArrayList`
 
 38. What is the use of `File` Class?
 

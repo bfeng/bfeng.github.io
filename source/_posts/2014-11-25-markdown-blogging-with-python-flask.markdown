@@ -12,6 +12,8 @@ categories: [Python, Markdown, blogging, tutorial]
 
 This tutorial shows how to use Flask and how to integrate a Markdown parser/render into Flask.
 
+<!--more-->
+
 ## Implementation
 Flask based project has no file structure requirements. Python programs, view templates and static files such as javascript files, stylesheets and images can be organized freely. Here are the steps to implement it.
 

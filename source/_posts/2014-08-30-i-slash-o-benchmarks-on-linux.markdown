@@ -11,6 +11,7 @@ Benchmarks are useful tools, which help to understand system performance in a si
 
 There are many benchmarks under Linux platform, some of which are also applicable for any POSIX compliant systems.
 
+<!--more-->
 
 ## dd
 
