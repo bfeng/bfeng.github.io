@@ -10,6 +10,8 @@ published: true
 ## Introduction
 Trie is a tree data structure, which is very useful in many aspects, such as word count and statistics. It stores data in sorted order, so its retrieval is faster than other data structures in some cases. This tutorial introduces some resources of helping to learn and understand this data structure.
 
+<!--more-->
+
 ## Comprehensive Overview
 The most comprehensive source to learn trie is [this page](http://en.wikipedia.org/wiki/Trie) from Wikipedia. This wikipage describes its pronunciation: ‘tree’ or ‘try’, its applications in dictionary representation, sorting, full-text search and many others.
 
