@@ -8,7 +8,7 @@ categories: [Python, Markdown, blogging, tutorial]
 
 ## Introduction
 
-[Flask](http://flask.pocoo.org/) is a popular lightweight Python web MVC framework. Compared to `Django`, Flask  based projects are usually simpler to implement and easier to maintain. Flask is BSD licensed and developed by pocoo team.
+[Flask](http://flask.pocoo.org/) is a popular lightweight Python web MVC framework. Compared to `Django`, Flask  based projects are usually simpler to implement and easier to maintain. Flask is BSD licensed and developed by Pocono team.
 
 This tutorial shows how to use Flask and how to integrate a Markdown parser/render into Flask.
 
@@ -29,7 +29,7 @@ Flask based project has no file structure requirements. Python programs, view te
 
 ### Initiate the blogging program
 
-Create a python file namely `blog.py`. The code below gives an example to use Flask and view templates. `index.html` is a `Jinja2` template. The full code is shown in appendix.
+Create a python file namely `blog.py`. The code below gives an example to use Flask and view templates. `index.html` is a `Jinja2` template. The full code is shown in the appendix.
 
 {% codeblock lang:python %}
 from flask import Flask
@@ -82,7 +82,7 @@ def index():
 {% endcodeblock %}
 
 ## Conclusion
-This tutorial introduces Flask and Flask-Misaka, which integrates Markdown into web framework. The code shown in appendix is not supposed for production use. It focuses on basic examples of Flask and markdown integration.
+This tutorial introduces Flask and Flask-Misaka, which integrates Markdown into web framework. The code shown in the appendix is not supposed for production use. It focuses on basic examples of Flask and markdown integration.
 
 ## Appendix
 
