@@ -65,7 +65,7 @@ This questions are mainly from internet.
 14. Can you brief me about Singleton Class?
 
 	It basically controls object creation, restricting the number to one while allowing the flexibility to create objects if the scenario changes.
-	Singleton is one of the design methods. It guarantees that there si only one instance at runtime.
+	Singleton is one of the design methods. It guarantees that there is only one instance at runtime.
 
 15. In Java, what is the default value of float and double?
 
