@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Java | My Two Cents]]></title>
+  <link href="http://bfeng.github.io/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://bfeng.github.io/"/>
+  <updated>2016-05-23T17:35:10-04:00</updated>
+  <id>http://bfeng.github.io/</id>
+  <author>
+    <name><![CDATA[Bo Feng]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Learn the Trie Data Structure]]></title>
+    <link href="http://bfeng.github.io/blog/2015/01/20/learn-the-trie-data-structure/"/>
+    <updated>2015-01-20T17:00:41-05:00</updated>
+    <id>http://bfeng.github.io/blog/2015/01/20/learn-the-trie-data-structure</id>
+    <content type="html"><![CDATA[<h2>Introduction</h2>
+
+<p>Trie is a tree data structure, which is very useful in many aspects, such as word count and statistics. It stores data in sorted order, so its retrieval is faster than other data structures in some cases. This tutorial introduces some resources of helping to learn and understand this data structure.</p>
+
+<!--more-->
+
+
+<h2>Comprehensive Overview</h2>
+
+<p>The most comprehensive source to learn trie is <a href="http://en.wikipedia.org/wiki/Trie">this page</a> from Wikipedia. This wikipage describes its pronunciation: ‘tree’ or ‘try’, its applications in dictionary representation, sorting, full-text search and many others.</p>
+
+<h2>Trie in an Algorithm Book</h2>
+
+<p>Trie is covered in this Java algorithm book. This book introduces 50 algorithms that developers should know. The source code is shown online at <a href="http://algs4.cs.princeton.edu/code/">http://algs4.cs.princeton.edu/code/</a></p>
+
+<h2>Nice Illustration of Trie</h2>
+
+<p>Further more, Anna from Toptal posted <a href="http://www.toptal.com/java/the-trie-a-neglected-data-structure">a very nice page of Trie</a>. In her post, a simple game is used as a vivid example to show the usefulness of Trie. Then, some more decent and clear illustration figures were given out so that it is easy for readers to understand this data structure and its performance in advantage. I highly recommend that readers who want to learn Trie read her post and source code.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java Tutorial Day 2]]></title>
+    <link href="http://bfeng.github.io/blog/2014/05/21/java-tutorial-day-2/"/>
+    <updated>2014-05-21T22:52:11-04:00</updated>
+    <id>http://bfeng.github.io/blog/2014/05/21/java-tutorial-day-2</id>
+    <content type="html"><![CDATA[<h2>Introduction to Console I/O</h2>
+
+<p>I/O, which is short for <strong>Input and Output</strong>, is an important part in any programming language. So is in Java. Today we only refer the console I/O as the standard input and output in a console, which is also the simplest way how users interact with a program.</p>
+
+<!--more-->
+
+
+<h2>Input and Output Usage</h2>
+
+<p>When a program is running in the console, it often requires users to input some characters, such as parameters, records and text. The program may also print some characters to the console in order to notify the information to users.</p>
+
+<p>The output operation often involves the the array of characters and other variable types conversion, however the output operation in Java is simplified by providing many methods, so that programmers don&rsquo;t need to worry too much in output. When programmers compose the code to handle the input, it is often more complicated.</p>
+
+<p><code>System</code> class provides the standard input and output facilities, which are described in the following.</p>
+
+<h3>Input Usage</h3>
+
+<p>The console input is Java is encapsulated in <code>System.in</code>, which is a <code>static InputStream</code>. A input stream could be imaged like a stream of bytes, from which program can read bytes. So from <code>System.in</code>, programs can read users&#8217; input from the console.</p>
+
+<p>For the conversion reason, consoles may only accept characters, which should be converted into other types, such as integers. However, due to the consideration that <a href="http://www.microsoft.com/mspress/books/sampchap/5957.aspx">all input is evil</a>, programmers need to validate all the input data.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConsoleEcho1</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">;</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>    <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">64</span><span class="o">];</span>
+</span><span class='line'>      <span class="n">result</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buffer</span><span class="o">);</span>
+</span><span class='line'>      <span class="k">if</span><span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">result</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class='line'>          <span class="o">||</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;</span><span class="n">amp</span><span class="o">;&amp;</span><span class="n">amp</span><span class="o">;</span> <span class="n">buffer</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="o">;</span><span class="err">\</span><span class="n">n</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="o">;))</span>
+</span><span class='line'>        <span class="k">break</span><span class="o">;</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(&amp;</span><span class="n">ldquo</span><span class="o">;&gt;</span> <span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;</span> <span class="o">+</span> <span class="k">new</span> <span class="nf">String</span><span class="o">(</span><span class="n">buffer</span><span class="o">));</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>The above code gives an example of how to read byte array from <code>System.in</code>, how to covert the byte array into <code>String</code> and print on the console by <code>System.out</code>. <code>buffer</code> is an array of byte, which is used to store users&#8217; input content. In the line <code>System.out.print</code>, <code>new String</code> is used to convert the byte array into a string, so that the program can print the content into console.</p>
+
+<p>The following gives a more sophisticated example, which uses <code>InputStreamReader</code> and <code>BufferedReader</code> to wrap the input stream. The reason is documented in the Java API documentations:</p>
+
+<blockquote><p>In general, each read request made of a Reader causes a corresponding read request to be made of the underlying character or byte stream. It is therefore advisable to wrap a BufferedReader around any Reader whose read() operations may be costly, such as FileReaders and InputStreamReaders.</p></blockquote>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConsoleEcho2</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">BufferedReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">));&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">String</span> <span class="n">line</span><span class="o">;</span>
+</span><span class='line'><span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">line</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+</span><span class='line'>  <span class="k">if</span><span class="o">(</span><span class="n">line</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
+</span><span class='line'>    <span class="k">break</span><span class="o">;</span>
+</span><span class='line'>  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;&amp;gt; &quot;</span> <span class="o">+</span> <span class="n">line</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="n">reader</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>  <span class="o">}</span>
+</span><span class='line'><span class="o">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>Output Usage</h3>
+
+<p>The output operations is less complicated than the input. <code>System.out</code> is actually <code>static final PrintStream</code>, which provides many format and print methods. All these could be referred from the official Java API docs: <a href="http://docs.oracle.com/javase/7/docs/api/java/io/PrintStream.html">http://docs.oracle.com/javase/7/docs/api/java/io/PrintStream.html</a>.</p>
+
+<h2>Practice</h2>
+
+<p>Please design and implement a program, which allows users to input a positive number each line. After users hit enter key, the program prints out all users&#8217; input in an ascending order.</p>
+
+<p>For example:</p>
+
+<pre><code>&gt; Enter a number:
+&gt; 3
+&gt; Sorted: 3
+&gt; Enter a number:
+&gt; 5
+&gt; Sorted: 3, 5
+&gt; Enter a number:
+&gt; 1
+&gt; Sorted: 1, 3, 5
+&gt; Enter a number:
+&gt; 21
+&gt; Sorted: 1, 3, 5, 21
+&gt; Enter a number:
+&gt; 20
+&gt; Sorted: 1, 3, 5, 20, 21
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java Tutorial Day 1]]></title>
+    <link href="http://bfeng.github.io/blog/2014/05/13/java-tutorial-day-1/"/>
+    <updated>2014-05-13T18:19:23-04:00</updated>
+    <id>http://bfeng.github.io/blog/2014/05/13/java-tutorial-day-1</id>
+    <content type="html"><![CDATA[<h2>Introduction</h2>
+
+<p>Primitive data types are the basic data types used in Java. With primitive data types and arrays of them, many questions could be solved now. This post will cover what the primitive data types are and usage of the 1-d array of them. The control flow helps to build more complex program execution.</p>
+
+<!--more-->
+
+
+<h2>Primitive data types</h2>
+
+<p>Java is a static typed language as we described on <a href="2014/03/java-tutorial-day-0.html">Day 0</a>. This  feature requires the compiler knows the variable data types before usage. In practice, programmers have to declare which type the variable is.</p>
+
+<p>In Java, there are eight data types, called primitive data types,  because the
+usage of them is different from other Java object variables and all other Java
+classes are built by using them.</p>
+
+<p>The table below shows these eight primitive data types and their default values. Default values are the values when those variables are declared. The default values prevent the variables are not allocated memory space.</p>
+
+<table>
+    <caption>Table: Default values for the primitive data types</caption>
+    <tr>
+        <th>Data Types</th>
+        <th>Default Values (for fields)</th>
+    </tr>
+    <tr>
+        <td>byte</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>short</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>int</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>long</td>
+        <td>0L</td>
+    </tr>
+    <tr>
+        <td>float</td>
+        <td>0.0f</td>
+    </tr>
+    <tr>
+        <td>double</td>
+        <td>0.0d</td>
+    </tr>
+    <tr>
+        <td>char</td>
+        <td>&#8216;\u0000&#8217;</td>
+    </tr>
+    <tr>
+        <td>boolean</td>
+        <td>false</td>
+    </tr>
+</table>
+
+
+<p>Source: <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html">http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html</a></p>
+
+<p>Please refer <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html">this page</a> for more details of what these primitive data types are.</p>
+
+<h2>Array and java specialty</h2>
+
+<h3>Basic usage</h3>
+
+<p>Using primitive data types are not enough to build many variables. <code>Array</code> is used to declare as many the same type of variables as programmers want. An <code>Array</code> is a structure, which contains a serial of the same variables. Programs can access each element in the array by specifying a fixed <code>index</code>.</p>
+
+<pre><code>public class ArrayDemo1 {
+    public static void main(String[] args) {
+        int[] arr1;
+        arr1 = new int[2];
+        System.out.println(arr1[0]);
+        System.out.println(arr1[1]);
+
+        int[] arr2 = {1, 2};
+        System.out.println(arr2[0]);
+        System.out.println(arr2[1]);
+    }
+}
+</code></pre>
+
+<p>The example above shows two kinds of declaration of arrays. <code>int[] arr1</code> first declares  <code>arr1</code> is an array of integers. <code>arr1 = new int[2]</code> allocates the memory for two integers. Since we don&rsquo;t specify the initial values for each element, the element values in <code>arr1</code> should be <code>0</code> by default. <code>int[] arr2 = {1, 2}</code> declares variable name, allocates memory for two integers and gives out the initial values of the two integers: <code>1</code> and <code>2</code>.</p>
+
+<h3>Array length</h3>
+
+<p>Java array has a special property named <code>length</code>, which is quite useful to get the length of this array. The usage is quite simple as <code>arr1.length</code> and <code>arr2.length</code> for the variables in the above example.</p>
+
+<h2>Control flow statements</h2>
+
+<p>All the statements are generally executed from top to bottom and line by line. Control flow statements are the statements can break the normal work flow of the execution. Programmers can break, branch and set conditions to control the execution of programs. More specifically, the following list shows the basic control syntax in Java.</p>
+
+<ul>
+<li>if else
+
+<ul>
+<li>else if</li>
+</ul>
+</li>
+<li>switch case</li>
+<li>for</li>
+<li>while</li>
+<li>do while</li>
+<li>break</li>
+<li>continue</li>
+<li>return</li>
+</ul>
+
+
+<p>More examples and explanations could be found here: <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html">http://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html</a></p>
+
+<h2>Practice</h2>
+
+<p>A prime number is a natural number greater than 1 that has no positive divisor other than 1 and itself. (<a href="http://en.wikipedia.org/wiki/Prime_number">Wikipedia</a>)</p>
+
+<p>Please write a program to produce all the primes less than 1000. The output should be like this:</p>
+
+<pre><code>2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java Tutorial Day 0]]></title>
+    <link href="http://bfeng.github.io/blog/2014/03/02/java-tutorial-day-0/"/>
+    <updated>2014-03-02T01:13:25-05:00</updated>
+    <id>http://bfeng.github.io/blog/2014/03/02/java-tutorial-day-0</id>
+    <content type="html"><![CDATA[<h2>Introduction</h2>
+
+<p>Java is a computer programming language, which was invented by <a href="http://en.wikipedia.org/wiki/Sun_Microsystems">Sun Microsystems</a> and now has been merged into <a href="http://en.wikipedia.org/wiki/Oracle_Corporation">Oracle Corporation</a>. Java was originally designed by a Canadian computer scientist <a href="http://en.wikipedia.org/wiki/James_Gosling">James Gosling</a> when he worked at Sun Microsystems.</p>
+
+<!--more-->
+
+
+<p>Java is a distinguished language due to many features that other languages do not have. It is a static language but it does not run by the native code, like C or C++.
+It is interpreted at runtime but it is not dynamic typed like Perl, Python, PHP, etc. It is compiled into a platform neutral byte code, which is then interpreted by the Java Virtual Machine (JVM).</p>
+
+<pre><code>+-------+    +--------+    +-----+
+| .java | -&gt; | .class | -&gt; | JVM |
++-------+    +--------+    +-----+
+</code></pre>
+
+<h2>Setup JDK</h2>
+
+<p>JDK, which is short of Java Development Kit, is a set of tools used to develop Java programs. Before one can compile and run a Java program, the JDK should be installed. Here there are two commands users should get familiar:</p>
+
+<ol>
+<li><p>javac</p>
+
+<p> <code>javac</code> is a program which compiles the Java source code into byte code.</p></li>
+<li><p>java</p>
+
+<p> <code>java</code> is a program which start up a JVM and run Java byte code.</p></li>
+</ol>
+
+
+<p>So the above figure should be like this:</p>
+
+<pre><code>+-------+             +--------+
+| .java | -&gt; javac -&gt; | .class | -&gt; java
++-------+             +--------+
+</code></pre>
+
+<h3>Download and Installation</h3>
+
+<p>There are many distributions of JDK. The two representatives of them are from Oracle or OpenJDK project. They are free to download and use. For the convince, I assume the JDK is version 7 from Oracle in the following.</p>
+
+<h3>Setup System Environment Variables</h3>
+
+<p>This questions and answers give out a clear definition and usage about environment variables. Please refer them <a href="http://superuser.com/questions/284342/what-are-path-and-other-environment-variables-and-how-can-i-set-or-use-them">here</a>.</p>
+
+<p>For Windows users with GUI available, this <a href="http://www.computerhope.com/issues/ch000549.htm">post</a> is more friendly.</p>
+
+<p>Add <code>JAVA_HOME</code> variable. <code>JAVA_HOME</code> variable is used by many famous java programs such as <code>maven</code>, <code>ant</code>, <code>hadoop</code>, etc.</p>
+
+<pre><code>JAVA_HOME=&lt; the folder path where you installed JDK &gt;
+</code></pre>
+
+<p>Add the <code>&lt; the folder path where you installed JDK &gt;\bin</code> to your existing <code>PATH</code>. Please note that do not replace your <code>PATH</code> variable in case you will not run other programs.</p>
+
+<h2>Write your first Java program</h2>
+
+<p>Here is the first java program, which does nothing than print a line <code>Hello, world!</code> in the console.</p>
+
+<pre><code>public class HelloWorldApp {
+    public static void main(String[] args) {
+        System.out.println("Hello, world!");
+    }
+}
+</code></pre>
+
+<p>The following are the steps of building and run this program:</p>
+
+<ol>
+<li>Save the above code into a file named <code>HelloWorldApp.java</code></li>
+<li>Open your console and go to the folder contains <code>HelloWorldApp.java</code></li>
+<li>Compile the code by <code>javac HelloWorldApp.java</code>, then if successful, there should be a file named <code>HelloWorldApp.class</code></li>
+<li>Run the code by <code>java HelloWorldApp</code></li>
+<li>The program should print <code>Hello, world!</code> on your screen.</li>
+</ol>
+
+
+<h2>One step further</h2>
+
+<p>In the above code, <code>HelloWorldApp</code> is the class name. It should also be the file name, since it is the top level <code>public</code> class in the file. The method <code>public static void main</code> is the entry method for a Java program and the method arguments is <code>String[] args</code>, in which <code>String[]</code> refers the type as an array of <code>String</code> and <code>args</code> is the variable name. This arguments could be given from the command line when starting the program, like <code>java HelloWorldApp XXX</code>.</p>
+
+<p>So let&rsquo;s change the source code like this:</p>
+
+<pre><code>public class HelloWorldApp {
+    public static void main(String[] args) {
+        System.out.println("Hello, " + args[0]);
+    }
+}
+</code></pre>
+
+<p>Repeat the above steps of building this program: <code>javac HelloWorldApp.java</code>.
+Run the program: <code>java HelloWorldApp XXX</code>. Then, the program should print <code>Hello, XXX</code> on your screen.</p>
+
+<h2>Practice</h2>
+
+<p>Write your third program which could print a figure in the console like the following:</p>
+
+<pre><code>         *
+        ***
+       *****
+      *******
+     *********
+    ***********
+   *************
+  ***************
+ *****************
+*******************
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cracking Java Interview Questions]]></title>
+    <link href="http://bfeng.github.io/blog/2014/02/27/cracking-java-interview-questions/"/>
+    <updated>2014-02-27T20:56:52-05:00</updated>
+    <id>http://bfeng.github.io/blog/2014/02/27/cracking-java-interview-questions</id>
+    <content type="html"><![CDATA[<p>This questions are mainly from internet.</p>
+
+<!--more-->
+
+
+<ol>
+<li><p>What do you know about Java?</p>
+
+<p> Java is nothing but a high-level programming language from the Sun Microsystem, and now from Oracle Inc. It is released in the year 1995 and runs on multiple platforms like Linux, Windows, Mac and other variations of UNIX. <a href="http://en.wikipedia.org/wiki/James_Gosling">James Gosling</a> is known as the father of Java programming language.</p></li>
+<li><p>Can you differentiate between J2SDK 1.5 and J2SDK 5.0?</p>
+
+<p> There is no difference between J2SDK 1.5 and J2SDK 5.0. Sun Microsystems has just re-branded the versions. Since java 1.6, Java 6 and Java 7 are called for the version of 1.6 and 1.7, respectively.</p></li>
+<li><p>Can you name a few platforms that support Java?</p>
+
+<p> Yes, Java is supported by Windows, Mac as well as UNIX/Linux like Ubuntu, Red Hat, Sun Solaris, etc..</p></li>
+<li><p>Could you tell me why Java is called Architectural Neutral?</p>
+
+<p> The main reason is because the compiler creates an architecture neutral object file format. This makes the compiled code to be executable on different other processors.</p></li>
+<li><p>What is the difference between an Interface and an Abstract class?</p>
+
+<p> An abstract class can have instance methods that implement a default behavior. An Interface can only declare constants and instance methods, but cannot implement default behavior and all methods are implicitly abstract. An interface has all public members and no implementation. An abstract class is a class which may have the usual flavors of class members (<code>private</code>, <code>protected</code>, etc.), but has some abstract methods.</p></li>
+<li><p>What is the purpose of garbage collection in Java, and when is it used?</p>
+
+<p> The purpose of garbage collection is to identify and discard objects that are no longer needed by a program so that their resources can be reclaimed and reused. A Java object is subject to garbage collection when it becomes unreachable to the program in which it is used.</p></li>
+<li><p>How do you implement a thread in Java?</p>
+
+<p> In Java, there is <code>Thread</code> class that can be extended and <code>Runnable</code> interface that can be implemented. Since Java 1.6, there is a new interface <code>Callable</code>, which is also used as a thread interface but usually used as a concurrency task.</p></li>
+<li><p>Is the Java method called by reference or by value?</p>
+
+<p> Java does manipulate objects by reference, and all object variables are references. However, Java doesn&rsquo;t pass method arguments by reference; it passes them by value.</p></li>
+<li><p>What is the difference between a constructor and a method?</p>
+
+<p> A <code>final</code> class can&rsquo;t be extended ie., final class may not be extended. A final method can&rsquo;t be overridden when its class is inherited. You can&rsquo;t change value of a final variable (is a constant).</p></li>
+<li><p>Difference between <code>Vector</code> and <code>ArrayList</code>?</p>
+
+<p><code>Vector</code> is synchronized whereas <code>ArrayList</code> is not.</p></li>
+<li><p>What is <code>static</code> in Java? And <code>final</code>?</p>
+
+<p><code>static</code> means one per class, not one for each object no matter how many instance of a class might exist. This means that you can use them without creating an instance of a class. Static methods are implicitly final, because overriding is done based on the type of the object, and static methods are attached to a class, not an object. A static method in a super class can be shadowed by another static method in a subclass, as long as the original method was not declared final. However, you can&rsquo;t override a static method with a non-static method. In other words, you can&rsquo;t change a static method into an instance method in a subclass.</p></li>
+<li><p>What are the different ways you can use <code>static</code>?</p>
+
+<p><code>static</code> can be used in four ways: static variables, static methods, static classes and it can be used across a block of code in any class in order to indicate code that runs when a virtual machine starts and before the instances are created.</p></li>
+<li><p>Do you think all property of Immutable Object needs to be final?</p>
+
+<p>Not compulsory as we can easily achieve the same by making member as non-final but private and not changing them except in the constructor. Also, avoid providing setter methods for them. If it is a mutable object, then prevent leaking any reference for that member.</p></li>
+<li><p>Can you brief me about Singleton Class?</p>
+
+<p>It basically controls object creation, restricting the number to one while allowing the flexibility to create objects if the scenario changes.
+Singleton is one of the design methods. It guarantees that there is only one instance at runtime.</p></li>
+<li><p>In Java, what is the default value of float and double?</p>
+
+<p>Default value of Float is <code>0.0f</code> while <code>0.0d</code> for Double.</p></li>
+<li><p>Can you explain type erasure?</p>
+
+<p>It is nothing but a JVM phenomenon, which means that the runtime has no idea about the types of generic objects like <code>List&lt;Integer&gt;</code>.</p></li>
+<li><p>Explain Dot Operator.</p>
+
+<p>It is used to access the instance variables and methods of class objects. Also, we can use it to access classes and sub-packages from a package.</p></li>
+<li><p>What do you mean by Serialization in Java?</p>
+
+<p>Well, serialization is nothing but a process of transforming objects into a stream of bytes. While deserialization is the opposite operation, which transforms the stream of bytes into an instance.</p></li>
+<li><p>Can you tell me the reason why <code>String</code> class is considered immutable?</p>
+
+<p>It is because to avoid change in <code>String</code> object once it is created. As String is immutable, you can share it between different threads in a safe way. This is quite crucial in multithreaded programming.</p></li>
+<li><p>Can you quickly brief about <code>Map</code>, <code>HashMap</code>, <code>HashTable</code>, and <code>TreeMap</code>?</p>
+
+<p><code>Map</code> is an interface, and <code>HashMap</code> is a class that implements a <code>Map</code>. It is not synchronized and supports null values and keys <code>HashTable</code> is a synchronized version of <code>HashMap</code>. <code>TreeMap</code> is similar to <code>HashMap</code> but uses <code>Tree</code> to implement <code>Map</code>.</p></li>
+<li><p>Do you think not overriding <code>hashcode()</code> method has any performance implication?</p>
+
+<p>A weak <code>hashcode</code> function will result into frequent collision in <code>HashMap</code>, which will at the end increase the time to add an object within <code>HashMap</code>.</p></li>
+<li><p>Can you explain when and why Getters and Setters important?</p>
+
+<p>We can put setters and getters within interfaces, which can hide implementation details. This allows us to make member variables public in Java. Getters and Setters are important to encapsulate Java class, which hide the direct accesses to member fields. This design is called <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">Plain Old Java Object (POJO)</a>.</p></li>
+<li><p>Is it possible to import same package or class twice? Will the JVM load the package twice at runtime?</p>
+
+<p>It is possible to import the same package or class more than one time. Also, it won’t have any effect on compiler or JVM. JVM will load the class for one time only, irrespective of the number of times you import the same class.</p></li>
+<li><p>What is difference between Throw and Throws?</p>
+
+<p>While Throw is used to trigger an exception, Throws is used in the declaration of exception. It is not possible to handle checked exception without Throws.</p></li>
+<li><p>What is the significance of the order in which catch statements for <code>FileNotFoundException</code> and <code>IOException</code> are written?</p>
+
+<p>It is crucial to consider the order as the <code>FileNoFoundException</code> is inherited from the <code>IOException</code>. Therefore, it is important that exception&rsquo;s subclasses caught first.</p></li>
+<li><p>Can throw some light on Yielding and Sleeping?</p>
+
+<p>When any task invokes its <code>yield()</code> method, it will return to the ready state. Whenever a task invokes <code>sleep()</code> method, it will return to the wait state.</p></li>
+<li><p>Why you should use Vector class?</p>
+
+<p>It provides the capability to implement a growable array of objects. It is quite useful when we don’t know the exact size of the array.</p></li>
+<li><p>Can you tell me the number of bits used to represent Unicode, ASCII, UTF-16, and UTF-8 characters?</p>
+
+<p>For Unicode 16 bits and ASCII needs 7 bits. However, ASCII is usually represented as 8 bits. UTF-8 presents characters through 8, 16 and 18 bit pattern. UTF-16 will require 16-bit and larger bit patterns.</p></li>
+<li><p>What is Applets?</p>
+
+<p>A small program based on Java that can be transformed from one computer to another using the Applet Viewer or web browser.</p></li>
+<li><p>What is the use of Locale?</p>
+
+<p>Locale is an object containing geographical, cultural and political information which helps in using custom codes and conventions of specific country or region for writing applications in that language.</p></li>
+<li><p>What is the use of Java Package?</p>
+
+<p>Java Package is useful for organizing projects containing multiple modules and protecting them from unauthorized access.</p></li>
+<li><p>While working in the JVM, do we need to import java.lang package?</p>
+
+<p>No, by default it is loaded in the JVM.</p></li>
+<li><p>Can Applets communicate with each other?</p>
+
+<p>Yes, they can communicate via shared static variables even if they belong to same of different classes.</p></li>
+<li><p>Can a .java file support more than one java classes?</p>
+
+<p>Yes, it can support more than one Java classes in a condition where one of them is a public class.</p></li>
+<li><p>MAIN, NEXT, DELETE &amp; EXIT, which of these is a keyword in Java?</p>
+
+<p>None of these is a keyword in Java</p></li>
+<li><p>How to handle errors while writing or accessing Stored Procedures.</p>
+
+<p>Store Procedure itself returns the error codes if any but, in case if it fails to do so, we can resort to catching SQL Exception.</p></li>
+<li><p>From <code>ArrayList</code> and <code>LinkedList</code>, which one helps to perform an indexed search in a list of objects?</p>
+
+<p><code>ArrayList</code></p></li>
+<li><p>What is the use of <code>File</code> Class?</p>
+
+<p>It helps in accessing files and directories of a local system. Note that both files and directories are represented by <code>File</code> class.</p></li>
+<li><p>Does Java support Default arguments?</p>
+
+<p>No, it does not support.</p></li>
+<li><p>Describe life cycle of Applets?</p>
+
+<p>Initialization, Starting, Stopping, Destroying &amp; Painting. Applets are not so useful nowadays. As to the rich client applications in the web world, <a href="http://en.wikipedia.org/wiki/Html5">HTML5</a> is the future.</p></li>
+<li><p>What is the method applied to load an image in Applet class?</p>
+
+<p>It’s <code>getImage</code>.</p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

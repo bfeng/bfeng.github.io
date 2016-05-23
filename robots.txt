@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: http://bfeng.github.io/sitemap.xml
