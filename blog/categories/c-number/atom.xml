@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: C# | My Two Cents]]></title>
+  <link href="http://bfeng.github.io/blog/categories/c-number/atom.xml" rel="self"/>
+  <link href="http://bfeng.github.io/"/>
+  <updated>2016-05-23T17:35:10-04:00</updated>
+  <id>http://bfeng.github.io/</id>
+  <author>
+    <name><![CDATA[Bo Feng]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Languages Are Trivial]]></title>
+    <link href="http://bfeng.github.io/blog/2012/04/10/Languages-are-trivial/"/>
+    <updated>2012-04-10T17:51:06Z</updated>
+    <id>http://bfeng.github.io/blog/2012/04/10/Languages-are-trivial</id>
+    <content type="html"><![CDATA[<p><blockquote><p>The more programming languages I learned, the more I hold the feeling that languages are trivial things in Computer Science.</p></blockquote></p>
+
+<p>Peoples are always discussing what is how to implemented in what language and what language is better than others. From the point of view of applying those technologies to the real world projects, they are correct, because knowing details of languages they are using will be very helpful to the implementation of projects they are working. However, languages themselves are actually a mixture of syntax and grammars, which are defined in compilers; and the how the languages are working is defined in the system, who has the rules that compilers have to follow either. The more programming languages I learned, the more I hold the feeling that languages are trivial things in Computer Science. For one thing that could be implemented in A language, it is very likely that it can be also implemented in B language. But what are the differences between A and B? In the perspective of coding, A and B maybe hold very diverse syntax and grammars, but actually they will be compiled to almost the same machine languages. So they could be viewed as the same program in the view of an operating system.</p>
+]]></content>
+  </entry>
+  
+</feed>

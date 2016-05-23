@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Cracking Java Interview Questions - My Two Cents</title>
+  <meta name="author" content="Bo Feng">
+
+  
+  <meta name="description" content="This questions are mainly from internet. What do you know about Java? Java is nothing but a high-level programming language from the Sun Microsystem &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bfeng.github.io/blog/2014/02/27/cracking-java-interview-questions">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Two Cents" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32900202-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Two Cents</a></h1>
+  
+    <h2>A blogging site from a hacker.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+  
+  
+    
+      <form action="https://www.google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="q" value="site:bfeng.github.io" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Cracking Java Interview Questions</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-27T20:56:52-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:56 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This questions are mainly from internet.</p>
+
+<!--more-->
+
+
+<ol>
+<li><p>What do you know about Java?</p>
+
+<p> Java is nothing but a high-level programming language from the Sun Microsystem, and now from Oracle Inc. It is released in the year 1995 and runs on multiple platforms like Linux, Windows, Mac and other variations of UNIX. <a href="http://en.wikipedia.org/wiki/James_Gosling">James Gosling</a> is known as the father of Java programming language.</p></li>
+<li><p>Can you differentiate between J2SDK 1.5 and J2SDK 5.0?</p>
+
+<p> There is no difference between J2SDK 1.5 and J2SDK 5.0. Sun Microsystems has just re-branded the versions. Since java 1.6, Java 6 and Java 7 are called for the version of 1.6 and 1.7, respectively.</p></li>
+<li><p>Can you name a few platforms that support Java?</p>
+
+<p> Yes, Java is supported by Windows, Mac as well as UNIX/Linux like Ubuntu, Red Hat, Sun Solaris, etc..</p></li>
+<li><p>Could you tell me why Java is called Architectural Neutral?</p>
+
+<p> The main reason is because the compiler creates an architecture neutral object file format. This makes the compiled code to be executable on different other processors.</p></li>
+<li><p>What is the difference between an Interface and an Abstract class?</p>
+
+<p> An abstract class can have instance methods that implement a default behavior. An Interface can only declare constants and instance methods, but cannot implement default behavior and all methods are implicitly abstract. An interface has all public members and no implementation. An abstract class is a class which may have the usual flavors of class members (<code>private</code>, <code>protected</code>, etc.), but has some abstract methods.</p></li>
+<li><p>What is the purpose of garbage collection in Java, and when is it used?</p>
+
+<p> The purpose of garbage collection is to identify and discard objects that are no longer needed by a program so that their resources can be reclaimed and reused. A Java object is subject to garbage collection when it becomes unreachable to the program in which it is used.</p></li>
+<li><p>How do you implement a thread in Java?</p>
+
+<p> In Java, there is <code>Thread</code> class that can be extended and <code>Runnable</code> interface that can be implemented. Since Java 1.6, there is a new interface <code>Callable</code>, which is also used as a thread interface but usually used as a concurrency task.</p></li>
+<li><p>Is the Java method called by reference or by value?</p>
+
+<p> Java does manipulate objects by reference, and all object variables are references. However, Java doesn&rsquo;t pass method arguments by reference; it passes them by value.</p></li>
+<li><p>What is the difference between a constructor and a method?</p>
+
+<p> A <code>final</code> class can&rsquo;t be extended ie., final class may not be extended. A final method can&rsquo;t be overridden when its class is inherited. You can&rsquo;t change value of a final variable (is a constant).</p></li>
+<li><p>Difference between <code>Vector</code> and <code>ArrayList</code>?</p>
+
+<p><code>Vector</code> is synchronized whereas <code>ArrayList</code> is not.</p></li>
+<li><p>What is <code>static</code> in Java? And <code>final</code>?</p>
+
+<p><code>static</code> means one per class, not one for each object no matter how many instance of a class might exist. This means that you can use them without creating an instance of a class. Static methods are implicitly final, because overriding is done based on the type of the object, and static methods are attached to a class, not an object. A static method in a super class can be shadowed by another static method in a subclass, as long as the original method was not declared final. However, you can&rsquo;t override a static method with a non-static method. In other words, you can&rsquo;t change a static method into an instance method in a subclass.</p></li>
+<li><p>What are the different ways you can use <code>static</code>?</p>
+
+<p><code>static</code> can be used in four ways: static variables, static methods, static classes and it can be used across a block of code in any class in order to indicate code that runs when a virtual machine starts and before the instances are created.</p></li>
+<li><p>Do you think all property of Immutable Object needs to be final?</p>
+
+<p>Not compulsory as we can easily achieve the same by making member as non-final but private and not changing them except in the constructor. Also, avoid providing setter methods for them. If it is a mutable object, then prevent leaking any reference for that member.</p></li>
+<li><p>Can you brief me about Singleton Class?</p>
+
+<p>It basically controls object creation, restricting the number to one while allowing the flexibility to create objects if the scenario changes.
+Singleton is one of the design methods. It guarantees that there is only one instance at runtime.</p></li>
+<li><p>In Java, what is the default value of float and double?</p>
+
+<p>Default value of Float is <code>0.0f</code> while <code>0.0d</code> for Double.</p></li>
+<li><p>Can you explain type erasure?</p>
+
+<p>It is nothing but a JVM phenomenon, which means that the runtime has no idea about the types of generic objects like <code>List&lt;Integer&gt;</code>.</p></li>
+<li><p>Explain Dot Operator.</p>
+
+<p>It is used to access the instance variables and methods of class objects. Also, we can use it to access classes and sub-packages from a package.</p></li>
+<li><p>What do you mean by Serialization in Java?</p>
+
+<p>Well, serialization is nothing but a process of transforming objects into a stream of bytes. While deserialization is the opposite operation, which transforms the stream of bytes into an instance.</p></li>
+<li><p>Can you tell me the reason why <code>String</code> class is considered immutable?</p>
+
+<p>It is because to avoid change in <code>String</code> object once it is created. As String is immutable, you can share it between different threads in a safe way. This is quite crucial in multithreaded programming.</p></li>
+<li><p>Can you quickly brief about <code>Map</code>, <code>HashMap</code>, <code>HashTable</code>, and <code>TreeMap</code>?</p>
+
+<p><code>Map</code> is an interface, and <code>HashMap</code> is a class that implements a <code>Map</code>. It is not synchronized and supports null values and keys <code>HashTable</code> is a synchronized version of <code>HashMap</code>. <code>TreeMap</code> is similar to <code>HashMap</code> but uses <code>Tree</code> to implement <code>Map</code>.</p></li>
+<li><p>Do you think not overriding <code>hashcode()</code> method has any performance implication?</p>
+
+<p>A weak <code>hashcode</code> function will result into frequent collision in <code>HashMap</code>, which will at the end increase the time to add an object within <code>HashMap</code>.</p></li>
+<li><p>Can you explain when and why Getters and Setters important?</p>
+
+<p>We can put setters and getters within interfaces, which can hide implementation details. This allows us to make member variables public in Java. Getters and Setters are important to encapsulate Java class, which hide the direct accesses to member fields. This design is called <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">Plain Old Java Object (POJO)</a>.</p></li>
+<li><p>Is it possible to import same package or class twice? Will the JVM load the package twice at runtime?</p>
+
+<p>It is possible to import the same package or class more than one time. Also, it won’t have any effect on compiler or JVM. JVM will load the class for one time only, irrespective of the number of times you import the same class.</p></li>
+<li><p>What is difference between Throw and Throws?</p>
+
+<p>While Throw is used to trigger an exception, Throws is used in the declaration of exception. It is not possible to handle checked exception without Throws.</p></li>
+<li><p>What is the significance of the order in which catch statements for <code>FileNotFoundException</code> and <code>IOException</code> are written?</p>
+
+<p>It is crucial to consider the order as the <code>FileNoFoundException</code> is inherited from the <code>IOException</code>. Therefore, it is important that exception&rsquo;s subclasses caught first.</p></li>
+<li><p>Can throw some light on Yielding and Sleeping?</p>
+
+<p>When any task invokes its <code>yield()</code> method, it will return to the ready state. Whenever a task invokes <code>sleep()</code> method, it will return to the wait state.</p></li>
+<li><p>Why you should use Vector class?</p>
+
+<p>It provides the capability to implement a growable array of objects. It is quite useful when we don’t know the exact size of the array.</p></li>
+<li><p>Can you tell me the number of bits used to represent Unicode, ASCII, UTF-16, and UTF-8 characters?</p>
+
+<p>For Unicode 16 bits and ASCII needs 7 bits. However, ASCII is usually represented as 8 bits. UTF-8 presents characters through 8, 16 and 18 bit pattern. UTF-16 will require 16-bit and larger bit patterns.</p></li>
+<li><p>What is Applets?</p>
+
+<p>A small program based on Java that can be transformed from one computer to another using the Applet Viewer or web browser.</p></li>
+<li><p>What is the use of Locale?</p>
+
+<p>Locale is an object containing geographical, cultural and political information which helps in using custom codes and conventions of specific country or region for writing applications in that language.</p></li>
+<li><p>What is the use of Java Package?</p>
+
+<p>Java Package is useful for organizing projects containing multiple modules and protecting them from unauthorized access.</p></li>
+<li><p>While working in the JVM, do we need to import java.lang package?</p>
+
+<p>No, by default it is loaded in the JVM.</p></li>
+<li><p>Can Applets communicate with each other?</p>
+
+<p>Yes, they can communicate via shared static variables even if they belong to same of different classes.</p></li>
+<li><p>Can a .java file support more than one java classes?</p>
+
+<p>Yes, it can support more than one Java classes in a condition where one of them is a public class.</p></li>
+<li><p>MAIN, NEXT, DELETE &amp; EXIT, which of these is a keyword in Java?</p>
+
+<p>None of these is a keyword in Java</p></li>
+<li><p>How to handle errors while writing or accessing Stored Procedures.</p>
+
+<p>Store Procedure itself returns the error codes if any but, in case if it fails to do so, we can resort to catching SQL Exception.</p></li>
+<li><p>From <code>ArrayList</code> and <code>LinkedList</code>, which one helps to perform an indexed search in a list of objects?</p>
+
+<p><code>ArrayList</code></p></li>
+<li><p>What is the use of <code>File</code> Class?</p>
+
+<p>It helps in accessing files and directories of a local system. Note that both files and directories are represented by <code>File</code> class.</p></li>
+<li><p>Does Java support Default arguments?</p>
+
+<p>No, it does not support.</p></li>
+<li><p>Describe life cycle of Applets?</p>
+
+<p>Initialization, Starting, Stopping, Destroying &amp; Painting. Applets are not so useful nowadays. As to the rich client applications in the web world, <a href="http://en.wikipedia.org/wiki/Html5">HTML5</a> is the future.</p></li>
+<li><p>What is the method applied to load an image in Applet class?</p>
+
+<p>It’s <code>getImage</code>.</p></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    Bo Feng
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-02-27T20:56:52-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:56 pm</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/interview/'>interview</a>, <a class='category' href='/blog/categories/java/'>java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bfeng.github.io/blog/2014/02/27/cracking-java-interview-questions/" data-via="fengflier" data-counturl="http://bfeng.github.io/blog/2014/02/27/cracking-java-interview-questions/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-layout="button_count" data-send="false" data-width="300" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/02/26/vim4Lin_-a-super-smooth-vim-configuration-for-Linux/" title="Previous Post: vim4Lin: a super smooth vim configuration for Linux">&laquo; vim4Lin: a super smooth vim configuration for Linux</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/03/02/java-tutorial-day-0/" title="Next Post: Java Tutorial Day 0">Java Tutorial Day 0 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Bo Feng -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'mytwocents-github';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://bfeng.github.io/blog/2014/02/27/cracking-java-interview-questions/';
+        var disqus_url = 'http://bfeng.github.io/blog/2014/02/27/cracking-java-interview-questions/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
