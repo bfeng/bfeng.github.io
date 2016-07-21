@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Prototype | My Two Cents]]></title>
+  <link href="http://bfeng.github.io/blog/categories/prototype/atom.xml" rel="self"/>
+  <link href="http://bfeng.github.io/"/>
+  <updated>2016-07-20T22:12:17-04:00</updated>
+  <id>http://bfeng.github.io/</id>
+  <author>
+    <name><![CDATA[Bo Feng]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Pencil: A Charming Prototype Tool]]></title>
+    <link href="http://bfeng.github.io/blog/2013/03/09/Pencil_-A-charming-prototype-tool/"/>
+    <updated>2013-03-09T04:11:36Z</updated>
+    <id>http://bfeng.github.io/blog/2013/03/09/Pencil_-A-charming-prototype-tool</id>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://pencil.evolus.vn/images/home-ss.jpg">http://pencil.evolus.vn/images/home-ss.jpg</a>&#8221;></p>
+
+<p>I was looking for a free, nice prototype tool for web and mobile design for a long time. It&rsquo;s actually not hard to find an useful prototype or mock-up tool, but it&rsquo;s not easy to find a one which is free and easy to use on laptop and desktop which means the software is natively installed.</p>
+
+<p>So, yes, Pencil did the right thing. It is also an add-on for firefox here: <a href="https://addons.mozilla.org/en-us/firefox/addon/pencil">https://addons.mozilla.org/en-us/firefox/addon/pencil</a> . And also the home page here: <a href="http://pencil.evolus.vn/">http://pencil.evolus.vn/</a></p>
+
+<p>Let&rsquo;s talk about its features. Although the on-line editing tools are so popular today, sometimes we just want to memorize the quick responsiveness of native apps. Facilitated by Mozilla&rsquo;s xulrunner, the project provides cross-platform installations. This is very cool feature if you needs to work on different types of operating systems.</p>
+
+<p>It&rsquo;s a nice and easy to use tool for web design. It meant a not so complicated web but good enough for prototyping.</p>
+
+<p><img class="center <a" src="href="http://4.bp.blogspot.com/-m7u0fanQR78/UONwNM_OflI/AAAAAAAAAag/sBxKTaB59SM/s1600/Screen+shot+2013-01-01+at+5.23.40+PM.png">http://4.bp.blogspot.com/-m7u0fanQR78/UONwNM_OflI/AAAAAAAAAag/sBxKTaB59SM/s1600/Screen+shot+2013-01-01+at+5.23.40+PM.png</a>&#8221;></p>
+
+<p>It has the latest Android interface mockups. This is a very cool feature that most Android developers would love, because this tool could create an almost exact the same UI for Android mobiles and tablets. In addition, of course, to make this tool a strong competitor, this tool also supports iOS wireframes and GUIs.</p>
+
+<p><img class="center <a" src="href="http://2.bp.blogspot.com/-sRNGEwg-tM0/UONyiNy8V7I/AAAAAAAAAaw/VyGFCOWDwxA/s400/Screen+shot+2013-01-01+at+5.33.20+PM.png">http://2.bp.blogspot.com/-sRNGEwg-tM0/UONyiNy8V7I/AAAAAAAAAaw/VyGFCOWDwxA/s400/Screen+shot+2013-01-01+at+5.33.20+PM.png</a>&#8221;></p>
+
+<p><img class="center <a" src="href="http://2.bp.blogspot.com/-1dRVueibJgk/UONyjEZeBcI/AAAAAAAAAa4/ijXmOwXDTT4/s400/Screen+shot+2013-01-01+at+5.33.41+PM.png">http://2.bp.blogspot.com/-1dRVueibJgk/UONyjEZeBcI/AAAAAAAAAa4/ijXmOwXDTT4/s400/Screen+shot+2013-01-01+at+5.33.41+PM.png</a>&#8221;></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: C | My Two Cents]]></title>
+  <link href="http://bfeng.github.io/blog/categories/c/atom.xml" rel="self"/>
+  <link href="http://bfeng.github.io/"/>
+  <updated>2016-07-20T22:12:17-04:00</updated>
+  <id>http://bfeng.github.io/</id>
+  <author>
+    <name><![CDATA[Bo Feng]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Make a Windows Program]]></title>
+    <link href="http://bfeng.github.io/blog/2014/10/04/how-to-make-a-windows-program/"/>
+    <updated>2014-10-04T17:57:38-04:00</updated>
+    <id>http://bfeng.github.io/blog/2014/10/04/how-to-make-a-windows-program</id>
+    <content type="html"><![CDATA[<h2>Introduction</h2>
+
+<p>This is a tutorial of how to make a Windows program. It is just more like a hello-world program but implemented in Windows C. Windows C inherits from ANSI C but has many different features, including special data structures, system functions and even design patterns.</p>
+
+<p>This tutorial introduces the basic elements of Windows programs, such as main entry functions, window class registration, window class creation, control procedure, message loop and so on. Please note that the code in this tutorial is <em>not</em> for production use.</p>
+
+<!--more-->
+
+
+<h2>How to setup compilers</h2>
+
+<p>The first step to write a real application is to setup its compilers. <code>MinGW</code> is an open source compiler suite, including <code>GCC for C, C++, Fortran, Java, and Ada</code>, <code>binutils</code>, <code>Windows API, runtime</code>, and <code>make</code>. The following steps guide how to setup <code>MinGW</code> on Windows. In this tutorial, we use <code>MinGW-gcc</code> as the compiler for C and its runtime library to run the application on Windows.</p>
+
+<h3>Download and install <code>MinGW</code></h3>
+
+<p>The official site of <code>MinGW</code> gives a premium guide of how to: <a href="http://www.mingw.org/wiki/HOWTO_Install_the_MinGW_GCC_Compiler_Suite.">http://www.mingw.org/wiki/HOWTO_Install_the_MinGW_GCC_Compiler_Suite.</a></p>
+
+<p>The summary of this guide are:</p>
+
+<ol>
+<li>download a suitable installer</li>
+<li>extract and run the installer</li>
+<li>setup <code>MinGW\bin</code> in the <code>PATH</code> environment variable</li>
+</ol>
+
+
+<p>To verify your installation, just open a console and test some commands, such as <code>gcc</code> and <code>make</code>.</p>
+
+<h2>The basic elements of a Windows application</h2>
+
+<h3>The main function</h3>
+
+<p>The following is the main function example of Windows applications. Instead of using the <code>main</code> for ANSI C applications, the main function is defined as <code>WinMain</code> under Windows.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">windows</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="n">Main</span> <span class="n">function</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">APIENTRY</span> <span class="n">WinMain</span><span class="p">(</span><span class="n">HINSTANCE</span> <span class="n">hInstance</span><span class="p">,</span>
+</span><span class='line'>                     <span class="n">HINSTANCE</span> <span class="n">hPrevInstance</span><span class="p">,</span>
+</span><span class='line'>                     <span class="n">LPSTR</span>     <span class="n">lpCmdLine</span><span class="p">,</span>
+</span><span class='line'>                     <span class="kt">int</span>       <span class="n">nCmdShow</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>For Windows applications, each instance of an application is controlled by a <code>handle</code>, the structure of which is defined as <code>HINSTANCE</code>. So int <code>WinMain</code>, the first two arguments are instance handles of applications. <code>hInstance</code> is the handle to the current instance of the application. <code>hPrevInsance</code> is the handle to previous instance of the applications. However, the <em>previous</em> here is varied by cases. In addition to the third and fourth arguments, please refer to the official documentation of this function <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms633559(v=vs.85).aspx">here</a>.</p>
+
+<h3>Register a window class</h3>
+
+<p>A Windows application composites of a class of windows. Before creating a visible application under graphic environment, a new window class should be defined and registered in the system. The data structure <code>WNDCLASSEX</code> used with <code>RegisterClassEx</code> can define and register the window class. Below is an example of a window class in main function.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">windows</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">const</span> <span class="kt">char</span> <span class="n">className</span><span class="p">[]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">MyWindowClass</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="n">Main</span> <span class="n">function</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">APIENTRY</span> <span class="n">WinMain</span><span class="p">(</span><span class="n">HINSTANCE</span> <span class="n">hInstance</span><span class="p">,</span>
+</span><span class='line'>                     <span class="n">HINSTANCE</span> <span class="n">hPrevInstance</span><span class="p">,</span>
+</span><span class='line'>                     <span class="n">LPSTR</span>     <span class="n">lpCmdLine</span><span class="p">,</span>
+</span><span class='line'>                     <span class="kt">int</span>       <span class="n">nCmdShow</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">WNDCLASSEX</span> <span class="n">winClass</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">cbSize</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">WNDCLASSEX</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">lpfnWndProc</span> <span class="o">=</span> <span class="n">WndProc</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">cbClsExtra</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">hInstance</span> <span class="o">=</span> <span class="n">hInstance</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">hIcon</span> <span class="o">=</span> <span class="n">LoadIcon</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">IDI_APPLICATION</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">hCursor</span> <span class="o">=</span> <span class="n">LoadCursor</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">IDC_ARROW</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">lpszMenuName</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">lpszClassName</span> <span class="o">=</span> <span class="n">className</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">hIconSm</span> <span class="o">=</span> <span class="n">LoadIcon</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">IDI_WINLOGO</span><span class="p">);</span>
+</span><span class='line'>  <span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span>    <span class="n">Register</span> <span class="n">window</span> <span class="n">class</span><span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">RegisterClassEx</span><span class="p">(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">winClass</span><span class="p">))</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>    <span class="n">MessageBox</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Window</span> <span class="n">Registration</span> <span class="n">Failed</span><span class="o">!&amp;</span><span class="n">rdquo</span><span class="p">;,</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Errors</span><span class="o">!&amp;</span><span class="n">rdquo</span><span class="p">;,</span> <span class="n">MB_ICONERROR</span> <span class="o">|</span> <span class="n">MB_OK</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>In this example, <code>winClass</code> is the variable of the <code>WNDCLASSEX</code> structure, and some properties are initialized. Calling <code>RegisterClassEx(&amp;winClass)</code> is to register the class in Windows environment. Then, the window class can be used in the rest of the program.</p>
+
+<h3>The control procedure</h3>
+
+<p>In the above code, <code>lpfnWndProc</code> is an important but intentionally omitted property. This property is a function pointer of a <em>windows procedure</em>. A windows procedure is a special function, used to control the message events from a class of window. Its definition is like this:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="n">Windows</span> <span class="n">Event</span> <span class="n">Handler</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="n">LRESULT</span> <span class="n">CALLBACK</span> <span class="n">WndProc</span><span class="p">(</span><span class="n">HWND</span> <span class="n">hwnd</span><span class="p">,</span> <span class="n">UINT</span> <span class="n">message</span><span class="p">,</span> <span class="n">WPARAM</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">LPARAM</span> <span class="n">lParam</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">DefWindowProc</span><span class="p">(</span><span class="n">hwnd</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">lParam</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Note that the function name is freely defined by programmers, but the argument list should be the same as the above example. The return result should be the result from <code>DefWindowProcW</code> So, the part of the register code should be revised like this:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span><span class='line'><span class="n">winClass</span><span class="p">.</span><span class="n">lpfnWndProc</span> <span class="o">=</span> <span class="n">WndProc</span><span class="p">;</span> <span class="c1">// pointer to WndProc</span>
+</span><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>Create a window</h3>
+
+<p>Finally, we can create an visible application in Windows by using the event loop of windows. As I mentioned above, windows applications are event-driven programming model. Event-driven model means every operation of an application may trigger an event and all the events are handled within the handling loop. Once the loop stops, the application is about to exit.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span><span class='line'><span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="n">Create</span> <span class="n">window</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="n">hwnd</span> <span class="o">=</span> <span class="n">CreateWindowEx</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">WS_EX_TOOLWINDOW</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">winClass</span><span class="p">.</span><span class="n">lpszClassName</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">className</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">WS_OVERLAPPEDWINDOW</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">CW_USEDEFAULT</span><span class="p">,</span> <span class="n">CW_USEDEFAULT</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span>
+</span><span class='line'>        <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">hInstance</span><span class="p">,</span> <span class="nb">NULL</span>
+</span><span class='line'>      <span class="p">);</span>
+</span><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>Show the window</h3>
+
+<p>Two simple functions are used to show the created window, otherwise the window is hidden from the graphics. Please refer to documents of <code>ShowWindow</code> and <code>UpdateWindow</code> on MSDN <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms633548(v=vs.85).aspx">here</a> and <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd145167(v=vs.85).aspx">here</a>.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">ShowWindow</span><span class="p">(</span><span class="n">hwnd</span><span class="p">,</span> <span class="n">SW_SHOW</span><span class="p">);</span>
+</span><span class='line'><span class="n">UpdateWindow</span><span class="p">(</span><span class="n">hwnd</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>Message Loop</h3>
+
+<p>The Windows C programming model is message looping, which means all behaviors are converted to messages and all messages are either sent or received by appropriated functions. The messages are finally passed to the control procedure.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span><span class='line'><span class="k">while</span> <span class="p">(</span><span class="n">GetMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">msg</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">TranslateMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">msg</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">DispatchMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">msg</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>More details in the control procedure</h3>
+
+<p>As we mentioned that Windows C program is designed in message-loop pattern, all the behaviors are converted to messages. The control procedure gives programmers a chance that can trap system and application behaviors in a loop of messages. So a common implemention ion of the control procedure is a big switch-case block. In this switch-case block, there are system message cases, such as <code>WM_CREATE</code>, <code>WM_PRINT</code>, <code>WM_CLOSE</code> and <code>WM_DESTROY</code>. These four messages are emitted from Windows system. In addition, applications can also emit their own messages. We won&rsquo;t discuss message customization in this tutorial. For example, the following gives the implemention that two types of messages are trapped in the loop: <code>WM_CLOSE</code> and <code>WM_DESTROY</code>. <code>WM_CLOSE</code> is a message sent to applications to indicate that this window or application should terminate. So we call <code>DestroyWindow</code> function in this case. <code>WM_DESTROY</code> is a message to indicate that the window is removed from the screen after destroying. For the explanation of <code>DestroyWindow</code> and <code>PostQuitMessage</code>, please refer to documents on MSDN <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms632682(v=vs.85).aspx">here</a> and <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms644945(v=vs.85).aspx">here</a>.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="n">Windows</span> <span class="n">Event</span> <span class="n">Handler</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="n">LRESULT</span> <span class="n">CALLBACK</span> <span class="n">WndProc</span><span class="p">(</span><span class="n">HWND</span> <span class="n">hwnd</span><span class="p">,</span> <span class="n">UINT</span> <span class="n">message</span><span class="p">,</span> <span class="n">WPARAM</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">LPARAM</span> <span class="n">lParam</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">switch</span> <span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">WM_CREATE</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">WM_PAINT</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">WM_CLOSE</span><span class="p">:</span>
+</span><span class='line'>      <span class="n">DestroyWindow</span><span class="p">(</span><span class="n">hwnd</span><span class="p">);</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">WM_DESTROY</span><span class="p">:</span>
+</span><span class='line'>      <span class="n">PostQuitMessage</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">DefWindowProc</span><span class="p">(</span><span class="n">hwnd</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">lParam</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2>Conclusion</h2>
+
+<p>We present how to install <code>MinGW</code>, and the basic elements of a Windows application. We simply introduced and explained what <code>MinGW</code> is and the design pattern of a bare example of a Windows application. As we know, Windows development has evolved into a stage, at which this kind of C implementation might be no longer used, however, this example can help to understand other frameworks, such as <code>MFC</code> and <code>C#</code>, because they either use wrappers for many functions in C or build functions on top of C.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Languages Are Trivial]]></title>
+    <link href="http://bfeng.github.io/blog/2012/04/10/Languages-are-trivial/"/>
+    <updated>2012-04-10T17:51:06Z</updated>
+    <id>http://bfeng.github.io/blog/2012/04/10/Languages-are-trivial</id>
+    <content type="html"><![CDATA[<p><blockquote><p>The more programming languages I learned, the more I hold the feeling that languages are trivial things in Computer Science.</p></blockquote></p>
+
+<p>Peoples are always discussing what is how to implemented in what language and what language is better than others. From the point of view of applying those technologies to the real world projects, they are correct, because knowing details of languages they are using will be very helpful to the implementation of projects they are working. However, languages themselves are actually a mixture of syntax and grammars, which are defined in compilers; and the how the languages are working is defined in the system, who has the rules that compilers have to follow either. The more programming languages I learned, the more I hold the feeling that languages are trivial things in Computer Science. For one thing that could be implemented in A language, it is very likely that it can be also implemented in B language. But what are the differences between A and B? In the perspective of coding, A and B maybe hold very diverse syntax and grammars, but actually they will be compiled to almost the same machine languages. So they could be viewed as the same program in the view of an operating system.</p>
+]]></content>
+  </entry>
+  
+</feed>

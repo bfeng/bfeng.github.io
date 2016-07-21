@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Minix | My Two Cents]]></title>
+  <link href="http://bfeng.github.io/blog/categories/minix/atom.xml" rel="self"/>
+  <link href="http://bfeng.github.io/"/>
+  <updated>2016-07-20T22:12:17-04:00</updated>
+  <id>http://bfeng.github.io/</id>
+  <author>
+    <name><![CDATA[Bo Feng]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Minix Published Its New Website!]]></title>
+    <link href="http://bfeng.github.io/blog/2012/06/21/Minix-published-its-new-website!/"/>
+    <updated>2012-06-21T22:28:36Z</updated>
+    <id>http://bfeng.github.io/blog/2012/06/21/Minix-published-its-new-website!</id>
+    <content type="html"><![CDATA[<p>Minix published its new website: <a href="http://www.minix.org">http://www.minix.org</a></p>
+
+<p>Let&rsquo;s have a mark for its old one.
+<img class="center <a" src="href="http://thumbs.xmarks.com/discover/thumbnail/read?cid=DRFT&amp;amp;id=9134354&amp;amp;size=Large">http://thumbs.xmarks.com/discover/thumbnail/read?cid=DRFT&amp;amp;id=9134354&amp;amp;size=Large</a>&#8221;></p>
+]]></content>
+  </entry>
+  
+</feed>

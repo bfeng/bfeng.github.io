@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Mvc | My Two Cents]]></title>
+  <link href="http://bfeng.github.io/blog/categories/mvc/atom.xml" rel="self"/>
+  <link href="http://bfeng.github.io/"/>
+  <updated>2016-07-20T22:12:17-04:00</updated>
+  <id>http://bfeng.github.io/</id>
+  <author>
+    <name><![CDATA[Bo Feng]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[HTML5 Web App Design Pattern: Is MVC Mode Correct?]]></title>
+    <link href="http://bfeng.github.io/blog/2012/06/29/HTML5-Web-App-Design-Pattern_-Is-MVC-Mode-Correct_/"/>
+    <updated>2012-06-29T06:19:32Z</updated>
+    <id>http://bfeng.github.io/blog/2012/06/29/HTML5-Web-App-Design-Pattern_-Is-MVC-Mode-Correct_</id>
+    <content type="html"><![CDATA[<p>MVC is a traditional pattern to develop a web project in many aspects and languages. All main stream languages have their own implementation of MVC framework, some of which have more than one framework, such as Java. Actually MVC is a classical design pattern which is used to develop large scale projects. It is now heavily used in the back-end software development in modern view of web projects. Some famous frameworks, such as Rails, are especially good at this point. So MVC is so successful in modern eara.</p>
+
+<p>MVC, in my opinion, is too successful that it is very easy for developers to build this imagination to other levels of project stacks involving Web Server development, caching system in many layers of an OS, message-passing system in distributed system and even Cloud computing. As we know, Web 2.0 brings not only interest profit but also challenges, one of which is the design pattern of front-end which is usually a sub-project implemented in javascript. Even though javascript is not a well-designed language in browsers, we have no other choices. Therefore developers could be very willing to use MVC in front-end javascript projects.</p>
+
+<p>However,front-end development is highly related to manipulations on the elements in a web page. The more we are using MVC in a html page, the more tricks we are adding to. Because the underlying operations of MVC make the page to add elements and remove elements again. There are many disadvantages in this approach. The performance may be loss since MVC deletes elements and adds elements again and again. MVC mode is usually involved in many lines of code, because the javascript not only has to handle the page rendering but also the functionalities of the page. If the front-end rendering of one function is tight-up with that of other functions, the code is not reusable in other projects or even other pages.</p>
+]]></content>
+  </entry>
+  
+</feed>

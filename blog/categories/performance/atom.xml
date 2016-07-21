@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Performance | My Two Cents]]></title>
+  <link href="http://bfeng.github.io/blog/categories/performance/atom.xml" rel="self"/>
+  <link href="http://bfeng.github.io/"/>
+  <updated>2016-07-20T22:12:17-04:00</updated>
+  <id>http://bfeng.github.io/</id>
+  <author>
+    <name><![CDATA[Bo Feng]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The C10K Problem]]></title>
+    <link href="http://bfeng.github.io/blog/2014/08/04/the-c10k-problem/"/>
+    <updated>2014-08-04T23:32:13-04:00</updated>
+    <id>http://bfeng.github.io/blog/2014/08/04/the-c10k-problem</id>
+    <content type="html"><![CDATA[<p>The C10K Problem is well-known for the web servers cannot handle ten thousands concurrent connectioins. The post is mostly known as the source of desciption of this problem and the solutions to how to solve under Linux platform.</p>
+
+<p>Please click the title to go to the original source.</p>
+]]></content>
+  </entry>
+  
+</feed>

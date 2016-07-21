@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Tutorial | My Two Cents]]></title>
+  <link href="http://bfeng.github.io/blog/categories/tutorial/atom.xml" rel="self"/>
+  <link href="http://bfeng.github.io/"/>
+  <updated>2016-07-20T22:12:17-04:00</updated>
+  <id>http://bfeng.github.io/</id>
+  <author>
+    <name><![CDATA[Bo Feng]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Learn the Trie Data Structure]]></title>
+    <link href="http://bfeng.github.io/blog/2015/01/20/learn-the-trie-data-structure/"/>
+    <updated>2015-01-20T17:00:41-05:00</updated>
+    <id>http://bfeng.github.io/blog/2015/01/20/learn-the-trie-data-structure</id>
+    <content type="html"><![CDATA[<h2>Introduction</h2>
+
+<p>Trie is a tree data structure, which is very useful in many aspects, such as word count and statistics. It stores data in sorted order, so its retrieval is faster than other data structures in some cases. This tutorial introduces some resources of helping to learn and understand this data structure.</p>
+
+<!--more-->
+
+
+<h2>Comprehensive Overview</h2>
+
+<p>The most comprehensive source to learn trie is <a href="http://en.wikipedia.org/wiki/Trie">this page</a> from Wikipedia. This wikipage describes its pronunciation: ‘tree’ or ‘try’, its applications in dictionary representation, sorting, full-text search and many others.</p>
+
+<h2>Trie in an Algorithm Book</h2>
+
+<p>Trie is covered in this Java algorithm book. This book introduces 50 algorithms that developers should know. The source code is shown online at <a href="http://algs4.cs.princeton.edu/code/">http://algs4.cs.princeton.edu/code/</a></p>
+
+<h2>Nice Illustration of Trie</h2>
+
+<p>Further more, Anna from Toptal posted <a href="http://www.toptal.com/java/the-trie-a-neglected-data-structure">a very nice page of Trie</a>. In her post, a simple game is used as a vivid example to show the usefulness of Trie. Then, some more decent and clear illustration figures were given out so that it is easy for readers to understand this data structure and its performance in advantage. I highly recommend that readers who want to learn Trie read her post and source code.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Markdown Blogging With Python Flask]]></title>
+    <link href="http://bfeng.github.io/blog/2014/11/25/markdown-blogging-with-python-flask/"/>
+    <updated>2014-11-25T17:42:32-05:00</updated>
+    <id>http://bfeng.github.io/blog/2014/11/25/markdown-blogging-with-python-flask</id>
+    <content type="html"><![CDATA[<h2>Introduction</h2>
+
+<p><a href="http://flask.pocoo.org/">Flask</a> is a popular lightweight Python web MVC framework. Compared to <code>Django</code>, Flask  based projects are usually simpler to implement and easier to maintain. Flask is BSD licensed and developed by Pocono team.</p>
+
+<p>This tutorial shows how to use Flask and how to integrate a Markdown parser/render into Flask.</p>
+
+<!--more-->
+
+
+<h2>Implementation</h2>
+
+<p>Flask based project has no file structure requirements. Python programs, view templates and static files such as javascript files, stylesheets and images can be organized freely. Here are the steps to implement it.</p>
+
+<h3>Create a project folder</h3>
+
+<pre><code>mkdir pyblog
+</code></pre>
+
+<h3>Install Prerequisites</h3>
+
+<pre><code>pip install Flask
+pip install Jinja2
+pip install Flask-Misaka
+</code></pre>
+
+<h3>Initiate the blogging program</h3>
+
+<p>Create a python file namely <code>blog.py</code>. The code below gives an example to use Flask and view templates. <code>index.html</code> is a <code>Jinja2</code> template. The full code is shown in the appendix.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">template_folder</span><span class="o">=&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">views</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@app.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">/&amp;</span><span class="n">rdquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">main</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;&amp;</span><span class="n">rdquo</span><span class="p">;:</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>Run this project</h3>
+
+<p>Running the project is straightforward like executing a normal python script.</p>
+
+<pre><code>python blog.py
+</code></pre>
+
+<h2>Integrate Markdown Renderer with Blogging Platform</h2>
+
+<p><a href="http://pythonhosted.org//Flask-Misaka/">Flask-Misaka</a> is a project integrate Misaka with Flask. <a href="http://misaka.61924.nl/">Misaka</a> is a python binding for <a href="https://github.com/vmg/sundown">Sundown</a>, which is a Markdown processing library in C.</p>
+
+<p>The code below shows how Flask-Misaka is integrated into Flask. After <code>app</code> is initialized by Flask, wrap <code>app</code> by Misaka: <code>Misaka(app)</code>.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask.ext.misaka</span> <span class="kn">import</span> <span class="n">Misaka</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name</span><span class="p">,</span> <span class="n">template_folder</span><span class="o">=&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">views</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;)</span>
+</span><span class='line'><span class="n">Misaka</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>After <code>app</code> is initialized, <code>markdown</code> can be used in <code>jinja2</code> templates. The code below shows <code>text</code> is rendered by <code>markdown</code>.
+
+<code>
+{{ text|markdown }}
+</code>
+</p>
+
+<p>The markdown content is written in <code>readme.md</code>, which is rendered into a web page. The code below opens the file and stores the text into <code>content</code>, which is rendered in the template.
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">content</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span>
+</span><span class='line'><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">readme</span><span class="o">.</span><span class="n">md</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">r</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span class='line'>  <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span> <span class="n">text</span> <span class="o">=</span> <span class="n">content</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2>Conclusion</h2>
+
+<p>This tutorial introduces Flask and Flask-Misaka, which integrates Markdown into web framework. The code shown in the appendix is not supposed for production use. It focuses on basic examples of Flask and markdown integration.</p>
+
+<h2>Appendix</h2>
+
+<p>blog.py</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">flask.ext.misaka</span> <span class="kn">import</span> <span class="n">Misaka</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">template_folder</span><span class="o">=&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">views</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;)</span>
+</span><span class='line'><span class="n">Misaka</span><span class="p">(</span><span class="n">app</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">content</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span>
+</span><span class='line'><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">readme</span><span class="o">.</span><span class="n">md</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">r</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@app.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">/&amp;</span><span class="n">rdquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="n">text</span><span class="o">=</span><span class="n">content</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">main</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;&amp;</span><span class="n">rdquo</span><span class="p">;:</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>views/index.html</p>
+
+<p>
+<code>
+&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My Markdown blogging site&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    {{ text|markdown }}
+  &lt;/body&gt;
+&lt;/html&gt;
+</code>
+</p>
+
+<p>readme.md</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>My Title&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h2>This is my blog with Markdown&lt;/h2>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Make a Windows Program]]></title>
+    <link href="http://bfeng.github.io/blog/2014/10/04/how-to-make-a-windows-program/"/>
+    <updated>2014-10-04T17:57:38-04:00</updated>
+    <id>http://bfeng.github.io/blog/2014/10/04/how-to-make-a-windows-program</id>
+    <content type="html"><![CDATA[<h2>Introduction</h2>
+
+<p>This is a tutorial of how to make a Windows program. It is just more like a hello-world program but implemented in Windows C. Windows C inherits from ANSI C but has many different features, including special data structures, system functions and even design patterns.</p>
+
+<p>This tutorial introduces the basic elements of Windows programs, such as main entry functions, window class registration, window class creation, control procedure, message loop and so on. Please note that the code in this tutorial is <em>not</em> for production use.</p>
+
+<!--more-->
+
+
+<h2>How to setup compilers</h2>
+
+<p>The first step to write a real application is to setup its compilers. <code>MinGW</code> is an open source compiler suite, including <code>GCC for C, C++, Fortran, Java, and Ada</code>, <code>binutils</code>, <code>Windows API, runtime</code>, and <code>make</code>. The following steps guide how to setup <code>MinGW</code> on Windows. In this tutorial, we use <code>MinGW-gcc</code> as the compiler for C and its runtime library to run the application on Windows.</p>
+
+<h3>Download and install <code>MinGW</code></h3>
+
+<p>The official site of <code>MinGW</code> gives a premium guide of how to: <a href="http://www.mingw.org/wiki/HOWTO_Install_the_MinGW_GCC_Compiler_Suite.">http://www.mingw.org/wiki/HOWTO_Install_the_MinGW_GCC_Compiler_Suite.</a></p>
+
+<p>The summary of this guide are:</p>
+
+<ol>
+<li>download a suitable installer</li>
+<li>extract and run the installer</li>
+<li>setup <code>MinGW\bin</code> in the <code>PATH</code> environment variable</li>
+</ol>
+
+
+<p>To verify your installation, just open a console and test some commands, such as <code>gcc</code> and <code>make</code>.</p>
+
+<h2>The basic elements of a Windows application</h2>
+
+<h3>The main function</h3>
+
+<p>The following is the main function example of Windows applications. Instead of using the <code>main</code> for ANSI C applications, the main function is defined as <code>WinMain</code> under Windows.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">windows</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="n">Main</span> <span class="n">function</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">APIENTRY</span> <span class="n">WinMain</span><span class="p">(</span><span class="n">HINSTANCE</span> <span class="n">hInstance</span><span class="p">,</span>
+</span><span class='line'>                     <span class="n">HINSTANCE</span> <span class="n">hPrevInstance</span><span class="p">,</span>
+</span><span class='line'>                     <span class="n">LPSTR</span>     <span class="n">lpCmdLine</span><span class="p">,</span>
+</span><span class='line'>                     <span class="kt">int</span>       <span class="n">nCmdShow</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>For Windows applications, each instance of an application is controlled by a <code>handle</code>, the structure of which is defined as <code>HINSTANCE</code>. So int <code>WinMain</code>, the first two arguments are instance handles of applications. <code>hInstance</code> is the handle to the current instance of the application. <code>hPrevInsance</code> is the handle to previous instance of the applications. However, the <em>previous</em> here is varied by cases. In addition to the third and fourth arguments, please refer to the official documentation of this function <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms633559(v=vs.85).aspx">here</a>.</p>
+
+<h3>Register a window class</h3>
+
+<p>A Windows application composites of a class of windows. Before creating a visible application under graphic environment, a new window class should be defined and registered in the system. The data structure <code>WNDCLASSEX</code> used with <code>RegisterClassEx</code> can define and register the window class. Below is an example of a window class in main function.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">windows</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">const</span> <span class="kt">char</span> <span class="n">className</span><span class="p">[]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">MyWindowClass</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="n">Main</span> <span class="n">function</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">APIENTRY</span> <span class="n">WinMain</span><span class="p">(</span><span class="n">HINSTANCE</span> <span class="n">hInstance</span><span class="p">,</span>
+</span><span class='line'>                     <span class="n">HINSTANCE</span> <span class="n">hPrevInstance</span><span class="p">,</span>
+</span><span class='line'>                     <span class="n">LPSTR</span>     <span class="n">lpCmdLine</span><span class="p">,</span>
+</span><span class='line'>                     <span class="kt">int</span>       <span class="n">nCmdShow</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">WNDCLASSEX</span> <span class="n">winClass</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">cbSize</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">WNDCLASSEX</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">lpfnWndProc</span> <span class="o">=</span> <span class="n">WndProc</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">cbClsExtra</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">hInstance</span> <span class="o">=</span> <span class="n">hInstance</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">hIcon</span> <span class="o">=</span> <span class="n">LoadIcon</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">IDI_APPLICATION</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">hCursor</span> <span class="o">=</span> <span class="n">LoadCursor</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">IDC_ARROW</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">lpszMenuName</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">lpszClassName</span> <span class="o">=</span> <span class="n">className</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">winClass</span><span class="p">.</span><span class="n">hIconSm</span> <span class="o">=</span> <span class="n">LoadIcon</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">IDI_WINLOGO</span><span class="p">);</span>
+</span><span class='line'>  <span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span>    <span class="n">Register</span> <span class="n">window</span> <span class="n">class</span><span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">RegisterClassEx</span><span class="p">(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">winClass</span><span class="p">))</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>    <span class="n">MessageBox</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Window</span> <span class="n">Registration</span> <span class="n">Failed</span><span class="o">!&amp;</span><span class="n">rdquo</span><span class="p">;,</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Errors</span><span class="o">!&amp;</span><span class="n">rdquo</span><span class="p">;,</span> <span class="n">MB_ICONERROR</span> <span class="o">|</span> <span class="n">MB_OK</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>In this example, <code>winClass</code> is the variable of the <code>WNDCLASSEX</code> structure, and some properties are initialized. Calling <code>RegisterClassEx(&amp;winClass)</code> is to register the class in Windows environment. Then, the window class can be used in the rest of the program.</p>
+
+<h3>The control procedure</h3>
+
+<p>In the above code, <code>lpfnWndProc</code> is an important but intentionally omitted property. This property is a function pointer of a <em>windows procedure</em>. A windows procedure is a special function, used to control the message events from a class of window. Its definition is like this:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="n">Windows</span> <span class="n">Event</span> <span class="n">Handler</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="n">LRESULT</span> <span class="n">CALLBACK</span> <span class="n">WndProc</span><span class="p">(</span><span class="n">HWND</span> <span class="n">hwnd</span><span class="p">,</span> <span class="n">UINT</span> <span class="n">message</span><span class="p">,</span> <span class="n">WPARAM</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">LPARAM</span> <span class="n">lParam</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">DefWindowProc</span><span class="p">(</span><span class="n">hwnd</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">lParam</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Note that the function name is freely defined by programmers, but the argument list should be the same as the above example. The return result should be the result from <code>DefWindowProcW</code> So, the part of the register code should be revised like this:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span><span class='line'><span class="n">winClass</span><span class="p">.</span><span class="n">lpfnWndProc</span> <span class="o">=</span> <span class="n">WndProc</span><span class="p">;</span> <span class="c1">// pointer to WndProc</span>
+</span><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>Create a window</h3>
+
+<p>Finally, we can create an visible application in Windows by using the event loop of windows. As I mentioned above, windows applications are event-driven programming model. Event-driven model means every operation of an application may trigger an event and all the events are handled within the handling loop. Once the loop stops, the application is about to exit.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span><span class='line'><span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="n">Create</span> <span class="n">window</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="n">hwnd</span> <span class="o">=</span> <span class="n">CreateWindowEx</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">WS_EX_TOOLWINDOW</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">winClass</span><span class="p">.</span><span class="n">lpszClassName</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">className</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">WS_OVERLAPPEDWINDOW</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">CW_USEDEFAULT</span><span class="p">,</span> <span class="n">CW_USEDEFAULT</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span>
+</span><span class='line'>        <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">hInstance</span><span class="p">,</span> <span class="nb">NULL</span>
+</span><span class='line'>      <span class="p">);</span>
+</span><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>Show the window</h3>
+
+<p>Two simple functions are used to show the created window, otherwise the window is hidden from the graphics. Please refer to documents of <code>ShowWindow</code> and <code>UpdateWindow</code> on MSDN <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms633548(v=vs.85).aspx">here</a> and <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd145167(v=vs.85).aspx">here</a>.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">ShowWindow</span><span class="p">(</span><span class="n">hwnd</span><span class="p">,</span> <span class="n">SW_SHOW</span><span class="p">);</span>
+</span><span class='line'><span class="n">UpdateWindow</span><span class="p">(</span><span class="n">hwnd</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>Message Loop</h3>
+
+<p>The Windows C programming model is message looping, which means all behaviors are converted to messages and all messages are either sent or received by appropriated functions. The messages are finally passed to the control procedure.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span><span class='line'><span class="k">while</span> <span class="p">(</span><span class="n">GetMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">msg</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">TranslateMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">msg</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">DispatchMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">msg</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>More details in the control procedure</h3>
+
+<p>As we mentioned that Windows C program is designed in message-loop pattern, all the behaviors are converted to messages. The control procedure gives programmers a chance that can trap system and application behaviors in a loop of messages. So a common implemention ion of the control procedure is a big switch-case block. In this switch-case block, there are system message cases, such as <code>WM_CREATE</code>, <code>WM_PRINT</code>, <code>WM_CLOSE</code> and <code>WM_DESTROY</code>. These four messages are emitted from Windows system. In addition, applications can also emit their own messages. We won&rsquo;t discuss message customization in this tutorial. For example, the following gives the implemention that two types of messages are trapped in the loop: <code>WM_CLOSE</code> and <code>WM_DESTROY</code>. <code>WM_CLOSE</code> is a message sent to applications to indicate that this window or application should terminate. So we call <code>DestroyWindow</code> function in this case. <code>WM_DESTROY</code> is a message to indicate that the window is removed from the screen after destroying. For the explanation of <code>DestroyWindow</code> and <code>PostQuitMessage</code>, please refer to documents on MSDN <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms632682(v=vs.85).aspx">here</a> and <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms644945(v=vs.85).aspx">here</a>.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="n">Windows</span> <span class="n">Event</span> <span class="n">Handler</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="n">LRESULT</span> <span class="n">CALLBACK</span> <span class="n">WndProc</span><span class="p">(</span><span class="n">HWND</span> <span class="n">hwnd</span><span class="p">,</span> <span class="n">UINT</span> <span class="n">message</span><span class="p">,</span> <span class="n">WPARAM</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">LPARAM</span> <span class="n">lParam</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">switch</span> <span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">WM_CREATE</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">WM_PAINT</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">WM_CLOSE</span><span class="p">:</span>
+</span><span class='line'>      <span class="n">DestroyWindow</span><span class="p">(</span><span class="n">hwnd</span><span class="p">);</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">WM_DESTROY</span><span class="p">:</span>
+</span><span class='line'>      <span class="n">PostQuitMessage</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">DefWindowProc</span><span class="p">(</span><span class="n">hwnd</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">lParam</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2>Conclusion</h2>
+
+<p>We present how to install <code>MinGW</code>, and the basic elements of a Windows application. We simply introduced and explained what <code>MinGW</code> is and the design pattern of a bare example of a Windows application. As we know, Windows development has evolved into a stage, at which this kind of C implementation might be no longer used, however, this example can help to understand other frameworks, such as <code>MFC</code> and <code>C#</code>, because they either use wrappers for many functions in C or build functions on top of C.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java Tutorial Day 2]]></title>
+    <link href="http://bfeng.github.io/blog/2014/05/21/java-tutorial-day-2/"/>
+    <updated>2014-05-21T22:52:11-04:00</updated>
+    <id>http://bfeng.github.io/blog/2014/05/21/java-tutorial-day-2</id>
+    <content type="html"><![CDATA[<h2>Introduction to Console I/O</h2>
+
+<p>I/O, which is short for <strong>Input and Output</strong>, is an important part in any programming language. So is in Java. Today we only refer the console I/O as the standard input and output in a console, which is also the simplest way how users interact with a program.</p>
+
+<!--more-->
+
+
+<h2>Input and Output Usage</h2>
+
+<p>When a program is running in the console, it often requires users to input some characters, such as parameters, records and text. The program may also print some characters to the console in order to notify the information to users.</p>
+
+<p>The output operation often involves the the array of characters and other variable types conversion, however the output operation in Java is simplified by providing many methods, so that programmers don&rsquo;t need to worry too much in output. When programmers compose the code to handle the input, it is often more complicated.</p>
+
+<p><code>System</code> class provides the standard input and output facilities, which are described in the following.</p>
+
+<h3>Input Usage</h3>
+
+<p>The console input is Java is encapsulated in <code>System.in</code>, which is a <code>static InputStream</code>. A input stream could be imaged like a stream of bytes, from which program can read bytes. So from <code>System.in</code>, programs can read users&#8217; input from the console.</p>
+
+<p>For the conversion reason, consoles may only accept characters, which should be converted into other types, such as integers. However, due to the consideration that <a href="http://www.microsoft.com/mspress/books/sampchap/5957.aspx">all input is evil</a>, programmers need to validate all the input data.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConsoleEcho1</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">;</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>    <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">64</span><span class="o">];</span>
+</span><span class='line'>      <span class="n">result</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buffer</span><span class="o">);</span>
+</span><span class='line'>      <span class="k">if</span><span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">result</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class='line'>          <span class="o">||</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;</span><span class="n">amp</span><span class="o">;&amp;</span><span class="n">amp</span><span class="o">;</span> <span class="n">buffer</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="o">;</span><span class="err">\</span><span class="n">n</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="o">;))</span>
+</span><span class='line'>        <span class="k">break</span><span class="o">;</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(&amp;</span><span class="n">ldquo</span><span class="o">;&gt;</span> <span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;</span> <span class="o">+</span> <span class="k">new</span> <span class="nf">String</span><span class="o">(</span><span class="n">buffer</span><span class="o">));</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>The above code gives an example of how to read byte array from <code>System.in</code>, how to covert the byte array into <code>String</code> and print on the console by <code>System.out</code>. <code>buffer</code> is an array of byte, which is used to store users&#8217; input content. In the line <code>System.out.print</code>, <code>new String</code> is used to convert the byte array into a string, so that the program can print the content into console.</p>
+
+<p>The following gives a more sophisticated example, which uses <code>InputStreamReader</code> and <code>BufferedReader</code> to wrap the input stream. The reason is documented in the Java API documentations:</p>
+
+<blockquote><p>In general, each read request made of a Reader causes a corresponding read request to be made of the underlying character or byte stream. It is therefore advisable to wrap a BufferedReader around any Reader whose read() operations may be costly, such as FileReaders and InputStreamReaders.</p></blockquote>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConsoleEcho2</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">BufferedReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">));&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">String</span> <span class="n">line</span><span class="o">;</span>
+</span><span class='line'><span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">line</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+</span><span class='line'>  <span class="k">if</span><span class="o">(</span><span class="n">line</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
+</span><span class='line'>    <span class="k">break</span><span class="o">;</span>
+</span><span class='line'>  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;&amp;gt; &quot;</span> <span class="o">+</span> <span class="n">line</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="n">reader</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>  <span class="o">}</span>
+</span><span class='line'><span class="o">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>Output Usage</h3>
+
+<p>The output operations is less complicated than the input. <code>System.out</code> is actually <code>static final PrintStream</code>, which provides many format and print methods. All these could be referred from the official Java API docs: <a href="http://docs.oracle.com/javase/7/docs/api/java/io/PrintStream.html">http://docs.oracle.com/javase/7/docs/api/java/io/PrintStream.html</a>.</p>
+
+<h2>Practice</h2>
+
+<p>Please design and implement a program, which allows users to input a positive number each line. After users hit enter key, the program prints out all users&#8217; input in an ascending order.</p>
+
+<p>For example:</p>
+
+<pre><code>&gt; Enter a number:
+&gt; 3
+&gt; Sorted: 3
+&gt; Enter a number:
+&gt; 5
+&gt; Sorted: 3, 5
+&gt; Enter a number:
+&gt; 1
+&gt; Sorted: 1, 3, 5
+&gt; Enter a number:
+&gt; 21
+&gt; Sorted: 1, 3, 5, 21
+&gt; Enter a number:
+&gt; 20
+&gt; Sorted: 1, 3, 5, 20, 21
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java Tutorial Day 1]]></title>
+    <link href="http://bfeng.github.io/blog/2014/05/13/java-tutorial-day-1/"/>
+    <updated>2014-05-13T18:19:23-04:00</updated>
+    <id>http://bfeng.github.io/blog/2014/05/13/java-tutorial-day-1</id>
+    <content type="html"><![CDATA[<h2>Introduction</h2>
+
+<p>Primitive data types are the basic data types used in Java. With primitive data types and arrays of them, many questions could be solved now. This post will cover what the primitive data types are and usage of the 1-d array of them. The control flow helps to build more complex program execution.</p>
+
+<!--more-->
+
+
+<h2>Primitive data types</h2>
+
+<p>Java is a static typed language as we described on <a href="2014/03/java-tutorial-day-0.html">Day 0</a>. This  feature requires the compiler knows the variable data types before usage. In practice, programmers have to declare which type the variable is.</p>
+
+<p>In Java, there are eight data types, called primitive data types,  because the
+usage of them is different from other Java object variables and all other Java
+classes are built by using them.</p>
+
+<p>The table below shows these eight primitive data types and their default values. Default values are the values when those variables are declared. The default values prevent the variables are not allocated memory space.</p>
+
+<table>
+    <caption>Table: Default values for the primitive data types</caption>
+    <tr>
+        <th>Data Types</th>
+        <th>Default Values (for fields)</th>
+    </tr>
+    <tr>
+        <td>byte</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>short</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>int</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>long</td>
+        <td>0L</td>
+    </tr>
+    <tr>
+        <td>float</td>
+        <td>0.0f</td>
+    </tr>
+    <tr>
+        <td>double</td>
+        <td>0.0d</td>
+    </tr>
+    <tr>
+        <td>char</td>
+        <td>&#8216;\u0000&#8217;</td>
+    </tr>
+    <tr>
+        <td>boolean</td>
+        <td>false</td>
+    </tr>
+</table>
+
+
+<p>Source: <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html">http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html</a></p>
+
+<p>Please refer <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html">this page</a> for more details of what these primitive data types are.</p>
+
+<h2>Array and java specialty</h2>
+
+<h3>Basic usage</h3>
+
+<p>Using primitive data types are not enough to build many variables. <code>Array</code> is used to declare as many the same type of variables as programmers want. An <code>Array</code> is a structure, which contains a serial of the same variables. Programs can access each element in the array by specifying a fixed <code>index</code>.</p>
+
+<pre><code>public class ArrayDemo1 {
+    public static void main(String[] args) {
+        int[] arr1;
+        arr1 = new int[2];
+        System.out.println(arr1[0]);
+        System.out.println(arr1[1]);
+
+        int[] arr2 = {1, 2};
+        System.out.println(arr2[0]);
+        System.out.println(arr2[1]);
+    }
+}
+</code></pre>
+
+<p>The example above shows two kinds of declaration of arrays. <code>int[] arr1</code> first declares  <code>arr1</code> is an array of integers. <code>arr1 = new int[2]</code> allocates the memory for two integers. Since we don&rsquo;t specify the initial values for each element, the element values in <code>arr1</code> should be <code>0</code> by default. <code>int[] arr2 = {1, 2}</code> declares variable name, allocates memory for two integers and gives out the initial values of the two integers: <code>1</code> and <code>2</code>.</p>
+
+<h3>Array length</h3>
+
+<p>Java array has a special property named <code>length</code>, which is quite useful to get the length of this array. The usage is quite simple as <code>arr1.length</code> and <code>arr2.length</code> for the variables in the above example.</p>
+
+<h2>Control flow statements</h2>
+
+<p>All the statements are generally executed from top to bottom and line by line. Control flow statements are the statements can break the normal work flow of the execution. Programmers can break, branch and set conditions to control the execution of programs. More specifically, the following list shows the basic control syntax in Java.</p>
+
+<ul>
+<li>if else
+
+<ul>
+<li>else if</li>
+</ul>
+</li>
+<li>switch case</li>
+<li>for</li>
+<li>while</li>
+<li>do while</li>
+<li>break</li>
+<li>continue</li>
+<li>return</li>
+</ul>
+
+
+<p>More examples and explanations could be found here: <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html">http://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html</a></p>
+
+<h2>Practice</h2>
+
+<p>A prime number is a natural number greater than 1 that has no positive divisor other than 1 and itself. (<a href="http://en.wikipedia.org/wiki/Prime_number">Wikipedia</a>)</p>
+
+<p>Please write a program to produce all the primes less than 1000. The output should be like this:</p>
+
+<pre><code>2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
